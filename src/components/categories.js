@@ -5,78 +5,58 @@ import {
   Col,
   Card,
   CardTitle,
-  CardText,
   CardImg,
-  CardImgOverlay
+  CardImgOverlay,
+  CardLink
 } from "reactstrap";
+import { StaticQuery, graphql } from "gatsby";
+
+const Cards = ({ pix }) => {
+  return pix.map(image => (
+    <Col xs={12} md={6} lg={4} key={image.node.coverPhoto.id}>
+      <Card inverse>
+        <CardImg src={image.node.coverPhoto.fixed.src} alt="Card image cap" />
+        <CardImgOverlay className="m-auto">
+          <CardTitle>{image.node.name}</CardTitle>
+          <CardLink
+            href={`/${image.node.name}/all`}
+            style={{ textDecoration: "none", color: "white" }}>
+            Detail
+          </CardLink>
+        </CardImgOverlay>
+      </Card>
+    </Col>
+  ));
+};
 
 export default () => {
   return (
     <Container id="category" className="mb-3">
-      <h1 class="text-center">Category</h1>
+      <h1 className="text-center">Category</h1>
       <Row>
-        <Col xs={12} md={6} lg={4}>
-          <Card inverse>
-            <CardImg
-              width="100%"
-              src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97270&w=318&h=270&bg=333333&txtclr=666666"
-              alt="Card image cap"
-            />
-            <CardImgOverlay>
-              <CardTitle>Card Title</CardTitle>
-              <CardText>
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </CardText>
-              <CardText>
-                <small className="text-muted">Last updated 3 mins ago</small>
-              </CardText>
-            </CardImgOverlay>
-          </Card>
-        </Col>
-
-        <Col xs={12} md={6} lg={4}>
-          <Card inverse>
-            <CardImg
-              width="100%"
-              src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97270&w=318&h=270&bg=333333&txtclr=666666"
-              alt="Card image cap"
-            />
-            <CardImgOverlay>
-              <CardTitle>Card Title</CardTitle>
-              <CardText>
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </CardText>
-              <CardText>
-                <small className="text-muted">Last updated 3 mins ago</small>
-              </CardText>
-            </CardImgOverlay>
-          </Card>
-        </Col>
-
-        <Col xs={12} md={6} lg={4}>
-          <Card inverse>
-            <CardImg
-              width="100%"
-              src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97270&w=318&h=270&bg=333333&txtclr=666666"
-              alt="Card image cap"
-            />
-            <CardImgOverlay>
-              <CardTitle>Card Title</CardTitle>
-              <CardText>
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </CardText>
-              <CardText>
-                <small className="text-muted">Last updated 3 mins ago</small>
-              </CardText>
-            </CardImgOverlay>
-          </Card>
-        </Col>
+        <StaticQuery
+          query={graphql`
+            query {
+              allContentfulProductCategory {
+                edges {
+                  node {
+                    name
+                    coverPhoto {
+                      id
+                      title
+                      fixed {
+                        src
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          `}
+          render={data => (
+            <Cards pix={data.allContentfulProductCategory.edges} />
+          )}
+        />
       </Row>
     </Container>
   );

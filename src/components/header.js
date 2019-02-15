@@ -1,4 +1,3 @@
-import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import {
@@ -79,10 +78,8 @@ const Header = ({ siteTitle }) => {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink>
-                <Link to="/page-2/" style={{ textDecoration: "none" }}>
-                  <MyNav>page 2</MyNav>
-                </Link>
+              <NavLink href="/page-2/">
+                <MyNav>page 2</MyNav>
               </NavLink>
             </NavItem>
             <NavItem>
