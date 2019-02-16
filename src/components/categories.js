@@ -19,7 +19,7 @@ const Cards = ({ pix }) => {
         <CardImgOverlay className="m-auto">
           <CardTitle>{image.node.name}</CardTitle>
           <CardLink
-            href={`/${image.node.name}/all`}
+            href={`/${image.node.name}`}
             style={{ textDecoration: "none", color: "white" }}>
             Detail
           </CardLink>

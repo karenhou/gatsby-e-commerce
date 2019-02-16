@@ -68,7 +68,7 @@ const Header = ({ siteTitle }) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="#service">
+              <NavLink href="/">
                 <MyNav>Landing</MyNav>
               </NavLink>
             </NavItem>

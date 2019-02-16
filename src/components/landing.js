@@ -31,15 +31,15 @@ export default function landing() {
               style={{
                 backgroundSize: "cover",
                 position: "absolute",
-                left: 0,
-                top: 0,
+                // left: 0,
+                // top: 0,
                 width: "100%",
                 height: "100vh"
               }}
             />
           )}
         />
-        <Header />
+        {/* <Header /> */}
         <Container>
           <Row style={{ height: "100vh" }}>
             <Col xs={12} className="text-center">
