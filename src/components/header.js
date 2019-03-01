@@ -7,19 +7,21 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   UncontrolledDropdown
 } from "reactstrap";
 import { StaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 import Img from "gatsby-image";
+import { Link } from "@reach/router";
 
 const MyHeader = styled.header`
   font-family: "Bungee Inline", cursive;
 `;
 
-const MyNav = styled.h5`
+const MyNav = styled(Link)`
   color: #84bec9;
+  margin-top: 1em;
+  padding: 0 1em;
   &:hover {
     color: #274547;
   }
@@ -68,24 +70,21 @@ const Header = ({ siteTitle }) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="/">
-                <MyNav>Landing</MyNav>
-              </NavLink>
+              <MyNav to="/" style={{ textDecoration: "none" }}>
+                Home
+              </MyNav>
+            </NavItem>
+
+            <NavItem>
+              <MyNav to="/auth" style={{ textDecoration: "none" }}>
+                SignUp/Login
+              </MyNav>
             </NavItem>
             <NavItem>
-              <NavLink href="#category">
-                <MyNav>Category</MyNav>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/page-2/">
-                <MyNav>page 2</MyNav>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="#">
-                <MyNav>SignUp/Login</MyNav>
-              </NavLink>
+              <MyNav to="/cart" style={{ textDecoration: "none" }}>
+                <i className="fas fa-shopping-cart fa-lg" />
+                <span className="ml-2">0</span>
+              </MyNav>
             </NavItem>
             <UncontrolledDropdown nav inNavbar />
             {/* <NavItem>

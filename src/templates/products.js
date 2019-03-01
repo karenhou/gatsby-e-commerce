@@ -52,7 +52,7 @@ export default props => {
     <Layout>
       <Container>
         <h1 style={{ textAlign: "center" }}>{props.pageContext.cat}</h1>
-        <Row style={{ justifyContent: "center" }}>
+        <Row>
           {allContentfulProducts !== null ? (
             <ProductList products={allContentfulProducts.edges} />
           ) : (
