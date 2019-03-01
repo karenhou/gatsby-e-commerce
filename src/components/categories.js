@@ -4,26 +4,39 @@ import {
   Row,
   Col,
   Card,
-  CardTitle,
   CardImg,
   CardImgOverlay,
   CardLink
 } from "reactstrap";
+import styled from "styled-components";
 import { StaticQuery, graphql } from "gatsby";
+
+const MyCardImgOverlay = styled(CardImgOverlay)`
+  color: white;
+  text-align: center;
+  position: absolute;
+  top: 33% !important;
+`;
+
+const MyCardLink = styled(CardLink)`
+  color: white;
+  font-size: xx-large;
+`;
 
 const Cards = ({ pix }) => {
   return pix.map(image => (
-    <Col xs={12} md={6} lg={4} key={image.node.coverPhoto.id}>
+    <Col xs={12} md={6} lg={4} key={image.node.coverPhoto.id} className="mb-4">
       <Card inverse>
         <CardImg src={image.node.coverPhoto.fixed.src} alt="Card image cap" />
-        <CardImgOverlay className="m-auto">
-          <CardTitle>{image.node.name}</CardTitle>
-          <CardLink
+        <MyCardImgOverlay>
+          <MyCardLink
             href={`/${image.node.name}`}
-            style={{ textDecoration: "none", color: "white" }}>
-            Detail
-          </CardLink>
-        </CardImgOverlay>
+            style={{
+              textDecoration: "none"
+            }}>
+            {image.node.name}
+          </MyCardLink>
+        </MyCardImgOverlay>
       </Card>
     </Col>
   ));
