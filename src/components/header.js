@@ -13,6 +13,34 @@ import { StaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 import Img from "gatsby-image";
 import { Link } from "@reach/router";
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
+
+const cartQuery = gql`
+  query {
+    cart @client {
+      count
+    }
+  }
+`;
+
+const CartComponent = () => {
+  // console.log(object)
+  return (
+    <Query query={cartQuery}>
+      {({ data }) => {
+        if (data.cart) {
+          return (
+            <MyNav to="/cart" style={{ textDecoration: "none" }}>
+              <i className="fas fa-shopping-cart fa-lg" />
+              <span>Cart</span> <span>{data.cart.count}</span>
+            </MyNav>
+          );
+        } else return <div>Still loading</div>;
+      }}
+    </Query>
+  );
+};
 
 const MyHeader = styled.header`
   font-family: "Bungee Inline", cursive;
@@ -81,10 +109,7 @@ const Header = ({ siteTitle }) => {
               </MyNav>
             </NavItem>
             <NavItem>
-              <MyNav to="/cart" style={{ textDecoration: "none" }}>
-                <i className="fas fa-shopping-cart fa-lg" />
-                <span className="ml-2">0</span>
-              </MyNav>
+              <CartComponent />
             </NavItem>
             <UncontrolledDropdown nav inNavbar />
             {/* <NavItem>

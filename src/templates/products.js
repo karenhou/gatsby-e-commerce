@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
+import CartBtn from "../components/cartBtn";
 import {
   Card,
   CardImg,
@@ -16,7 +17,6 @@ import {
 
 const ProductList = ({ products }) => {
   return products.map(product => {
-    console.log(product.node.id);
     return (
       <Col xs={12} md={6} lg={4} key={product.node.id}>
         <Card>
@@ -38,6 +38,7 @@ const ProductList = ({ products }) => {
                 Detail
               </CardLink>
             </Button>
+            <CartBtn product={product} />
           </CardBody>
         </Card>
       </Col>
@@ -47,7 +48,6 @@ const ProductList = ({ products }) => {
 
 export default props => {
   const { allContentfulProducts } = props.data;
-  console.log("prd ", allContentfulProducts);
   return (
     <Layout>
       <Container>
