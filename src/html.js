@@ -21,6 +21,10 @@ export default class HTML extends React.Component {
             crossOrigin="anonymous"
           />
           <link rel="shortcut icon" href={favicon} />
+          <script
+            type="text/javascript"
+            src="node_modules/auth0-js/build/auth0.js"
+          />
         </head>
         <body {...this.props.bodyAttributes}>
           <noscript>You need to enable JavaScript to run this app.</noscript>

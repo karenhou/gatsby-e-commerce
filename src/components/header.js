@@ -15,6 +15,7 @@ import Img from "gatsby-image";
 import { Link } from "@reach/router";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
+import Login from "./login";
 
 const cartQuery = gql`
   query {
@@ -102,14 +103,11 @@ const Header = ({ siteTitle }) => {
                 Home
               </MyNav>
             </NavItem>
-
-            <NavItem>
-              <MyNav to="/auth" style={{ textDecoration: "none" }}>
-                SignUp/Login
-              </MyNav>
-            </NavItem>
             <NavItem>
               <CartComponent />
+            </NavItem>
+            <NavItem>
+              <Login />
             </NavItem>
             <UncontrolledDropdown nav inNavbar />
             {/* <NavItem>
