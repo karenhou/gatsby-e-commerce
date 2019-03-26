@@ -13,28 +13,27 @@ const cartQuery = gql`
   }
 `;
 
-class CartBtn extends Component {
-  handleAddToCart(client, data) {
-    const { node } = this.props.product;
+class removeItemBtn extends Component {
+  handleRemoveItem(client, data) {
+    const { node } = this.props;
     const newCart = { ...data.cart };
     let items = JSON.parse(newCart.items);
     items = items !== null ? items : [];
-    // console.log("props ", this.props.product.node, node);
-    newCart.count = items.length + 1;
-    items.push({
-      id: node.id,
-      name: node.name,
-      price: node.price,
-      image: node.photos[0].file.url,
-      quantity: 1
-    });
+    if (items !== null) {
+      items.forEach((item, i) => {
+        if (item.id === node.id) {
+          items.splice(i, 1);
+          newCart.count = items.length;
+        }
+      });
+    }
+
     newCart.items = JSON.stringify(items);
     client.writeData({
       data: {
         cart: newCart
       }
     });
-    // setTimeout(() => navigateTo("/cart"), 600);
   }
 
   render() {
@@ -43,8 +42,10 @@ class CartBtn extends Component {
         {({ data }) => (
           <ApolloConsumer>
             {client => (
-              <Button onClick={() => this.handleAddToCart(client, data)}>
-                Add to cart
+              <Button
+                onClick={() => this.handleRemoveItem(client, data)}
+                style={{ margin: "5px" }}>
+                <i className="fas fa-trash" />
               </Button>
             )}
           </ApolloConsumer>
@@ -54,4 +55,4 @@ class CartBtn extends Component {
   }
 }
 
-export default CartBtn;
+export default removeItemBtn;
