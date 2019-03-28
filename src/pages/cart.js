@@ -1,13 +1,18 @@
 import React from "react";
 import SEO from "../components/seo";
 import Layout from "../components/layout";
-import CartItems from "../components/cartItem";
+import CartHeader from "../components/cartHeader";
+import CartItem from "../components/cartItem";
+import { Container } from "reactstrap";
 
 const Cart = () => {
   return (
     <Layout>
       <SEO title="Cart" />
-      <CartItems />
+      <Container>
+        <CartHeader />
+        <CartItem />
+      </Container>
     </Layout>
   );
 };
