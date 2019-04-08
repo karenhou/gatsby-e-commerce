@@ -19,10 +19,10 @@ class CartBtn extends Component {
     const newCart = { ...data.cart };
     let items = JSON.parse(newCart.items);
     items = items !== null ? items : [];
-    // console.log("props ", this.props.product.node, node);
+
     newCart.count = items.length + 1;
     items.push({
-      id: node.id,
+      id: node.contentful_id,
       name: node.name,
       price: node.price,
       image: node.photos[0].file.url,
@@ -34,7 +34,6 @@ class CartBtn extends Component {
         cart: newCart
       }
     });
-    // setTimeout(() => navigateTo("/cart"), 600);
   }
 
   render() {

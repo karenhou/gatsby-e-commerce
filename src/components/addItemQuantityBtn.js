@@ -19,11 +19,10 @@ class AddItemQuantityBtn extends Component {
     const newCart = { ...data.cart };
     let items = JSON.parse(newCart.items);
     items = items !== null ? items : [];
-    // console.log("props ", items, node);
+
     if (items !== null) {
       items.forEach((item, i) => {
         if (item.id === node.id) {
-          // console.log(item, i);
           items[i] = {
             id: node.id,
             name: node.name,

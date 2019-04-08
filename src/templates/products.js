@@ -18,7 +18,7 @@ import {
 const ProductList = ({ products }) => {
   return products.map(product => {
     return (
-      <Col xs={12} md={6} lg={4} key={product.node.id}>
+      <Col xs={12} md={6} lg={4} key={product.node.contentful_id}>
         <Card>
           <CardImg
             top
@@ -33,7 +33,9 @@ const ProductList = ({ products }) => {
 
             <Button>
               <CardLink
-                href={`/${product.node.category.name}/${product.node.id}`}
+                href={`/${product.node.category.name}/${
+                  product.node.contentful_id
+                }`}
                 style={{ textDecoration: "none", color: "white" }}>
                 Detail
               </CardLink>
@@ -69,7 +71,7 @@ export const pageQuery = graphql`
     allContentfulProducts(filter: { category: { name: { eq: $cat } } }) {
       edges {
         node {
-          id
+          contentful_id
           name
           price
           inventory

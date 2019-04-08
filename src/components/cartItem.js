@@ -1,5 +1,5 @@
-import React from "react";
-import { Row, Col, ListGroup, ListGroupItem } from "reactstrap";
+import React, { Component } from "react";
+import { Row, Col, ListGroup, ListGroupItem, Button } from "reactstrap";
 import AddItemQuantityBtn from "./AddItemQuantityBtn";
 import ReduceItemQuantityBtn from "./reduceItemQuantityBtn";
 import RemoveItemBtn from "./removeItemBtn";
@@ -17,8 +17,10 @@ const cartQuery = gql`
   }
 `;
 
-const Item = ({ data }) => {
+const Item = ({ data, calTotal }) => {
   const items = data.cart.items ? JSON.parse(data.cart.items) : [];
+  calTotal(items);
+
   return items.map(item => {
     return (
       <ListGroup key={item.id}>
@@ -44,19 +46,57 @@ const Item = ({ data }) => {
   });
 };
 
-const CartItem = () => {
-  return (
-    <Query query={cartQuery}>
-      {({ data }) => {
-        return (
-          <ApolloConsumer>
-            {client => {
-              return <Item data={data} />;
-            }}
-          </ApolloConsumer>
-        );
-      }}
-    </Query>
-  );
-};
+class CartItem extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      items: [],
+      total: 0
+    };
+  }
+
+  calculateTotal(items) {
+    const { total } = this.state;
+    let newTotal = 0;
+    items.forEach(item => {
+      newTotal += item.price;
+    });
+    if (total !== newTotal) {
+      setTimeout(() => this.setState({ total: newTotal, items }), 300);
+    }
+  }
+
+  render() {
+    return (
+      <Query query={cartQuery}>
+        {({ data }) => {
+          return (
+            <ApolloConsumer>
+              {client => {
+                return (
+                  <>
+                    <Item
+                      data={data}
+                      calTotal={items => this.calculateTotal(items)}
+                    />
+                    {this.props.showCheckoutBtn ? (
+                      <Button
+                        onClick={() => this.props.handlePayment(this.state)}>
+                        Checkout
+                      </Button>
+                    ) : (
+                      ""
+                    )}
+                  </>
+                );
+              }}
+            </ApolloConsumer>
+          );
+        }}
+      </Query>
+    );
+  }
+}
+
 export default CartItem;

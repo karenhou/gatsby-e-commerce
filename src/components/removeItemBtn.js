@@ -27,7 +27,6 @@ class removeItemBtn extends Component {
         }
       });
     }
-
     newCart.items = JSON.stringify(items);
     client.writeData({
       data: {

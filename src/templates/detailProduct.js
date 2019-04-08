@@ -14,7 +14,6 @@ import {
 } from "reactstrap";
 
 export default props => {
-  console.log("details ", props);
   const { contentfulProducts } = props.data;
   return (
     <Layout>
@@ -47,8 +46,8 @@ export default props => {
 
 export const pageQuery = graphql`
   query findItem($item_id: String!) {
-    contentfulProducts(id: { eq: $item_id }) {
-      id
+    contentfulProducts(contentful_id: { eq: $item_id }) {
+      contentful_id
       name
       price
       inventory

@@ -21,6 +21,7 @@ export default class HTML extends React.Component {
             crossOrigin="anonymous"
           />
           <link rel="shortcut icon" href={favicon} />
+          <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0/dist/smooth-scroll.polyfills.min.js" />
           <script
             type="text/javascript"
             src="node_modules/auth0-js/build/auth0.js"

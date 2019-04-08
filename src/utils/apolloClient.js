@@ -14,8 +14,8 @@ if (!process.browser) {
 }
 
 const GRAPHQL_URL = process.env.NODE_ENV
-  ? "http://localhost:4000"
-  : "http://localhost:4000";
+  ? "http://localhost:4000/graphql"
+  : "http://localhost:4000/graphql";
 const cache = new InMemoryCache();
 const persistor = new CachePersistor({
   cache,

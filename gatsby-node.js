@@ -25,7 +25,7 @@ exports.createPages = ({ graphql, actions }) => {
                   category {
                     name
                   }
-                  id
+                  contentful_id
                   name
                 }
               }
@@ -40,10 +40,12 @@ exports.createPages = ({ graphql, actions }) => {
         const productsAll = result.data.allContentfulProducts.edges;
         productsAll.forEach((product, index) => {
           createPage({
-            path: `/${product.node.category.name}/${product.node.id}`,
+            path: `/${product.node.category.name}/${
+              product.node.contentful_id
+            }`,
             component: detailProduct,
             context: {
-              item_id: product.node.id
+              item_id: product.node.contentful_id
             }
           });
         });
