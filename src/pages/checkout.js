@@ -22,12 +22,13 @@ class Checkout extends Component {
       activeStep: 1,
       cartData: null,
       userData: "",
-      paymentData: null
+      paymentData: null,
+      paying: false
     };
   }
 
   render() {
-    const { activeStep, paymentData, userData, cartData } = this.state;
+    const { activeStep, paymentData, userData, cartData, paying } = this.state;
     return (
       <Layout>
         <SEO title="Checkout" />
@@ -85,6 +86,7 @@ class Checkout extends Component {
                   <ShippingDetail
                     cartData={cartData}
                     userData={userData}
+                    paying={paying}
                     backToForm={() => this.setState({ activeStep: 2 })}
                   />
                 </Col>
@@ -94,8 +96,13 @@ class Checkout extends Component {
                       <CheckoutForm
                         cartData={cartData}
                         userData={userData}
+                        handlePayBtn={data => this.setState({ paying: data })}
                         handlePayment={data =>
-                          this.setState({ activeStep: 4, paymentData: data })
+                          this.setState({
+                            activeStep: 4,
+                            paymentData: data,
+                            paying: !paying
+                          })
                         }
                       />
                     </Elements>

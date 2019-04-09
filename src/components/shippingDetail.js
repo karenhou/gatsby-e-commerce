@@ -16,7 +16,7 @@ const BorderContainer = styled(Container)`
   background: white;
 `;
 
-const ShippingDetail = ({ userData, cartData, backToForm }) => {
+const ShippingDetail = ({ userData, cartData, backToForm, paying }) => {
   const { items } = cartData;
   return (
     <BorderContainer>
@@ -37,7 +37,7 @@ const ShippingDetail = ({ userData, cartData, backToForm }) => {
         </p>
       ))}
       <p>total: {cartData.total}</p>
-      <Button onClick={backToForm}>Back</Button>
+      {paying ? "" : <Button onClick={backToForm}>Back</Button>}
     </BorderContainer>
   );
 };

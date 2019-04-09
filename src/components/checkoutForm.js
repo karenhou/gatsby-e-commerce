@@ -118,6 +118,7 @@ class CheckoutForm extends Component {
     });
 
     if (error === undefined && token) {
+      this.props.handlePayBtn(true);
       this.setState({
         loading: true
       });
