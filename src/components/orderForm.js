@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { isUndefined } from "underscore";
 import { withFormik } from "formik";
 import * as Yup from "yup";
+import { navigateTo } from "gatsby-link";
 
 const ErrorP = styled.p`
   color: red;
@@ -19,6 +20,10 @@ class OrderForm extends Component {
   }
 
   componentDidMount() {
+    if (this.props.cartData.count === 0) {
+      navigateTo("/");
+    }
+
     const isMobile = !isUndefined(global.window)
       ? global.window.innerWidth < 768
       : false;
@@ -204,16 +209,16 @@ OrderForm.propTypes = {
 };
 
 export default withFormik({
-  mapPropsToValues: () => ({
-    fullName: "",
-    address1: "",
-    address2: "",
-    city: "",
-    postcode: "",
-    state: "",
-    country: "",
-    email: "",
-    telephone: ""
+  mapPropsToValues: props => ({
+    fullName: props.userData.fullName || "",
+    address1: props.userData.address1 || "",
+    address2: props.userData.address2 || "",
+    city: props.userData.city || "",
+    postcode: props.userData.postcode || "",
+    state: props.userData.state || "",
+    country: props.userData.country || "",
+    email: props.userData.email || "",
+    telephone: props.userData.telephone || ""
   }),
   validationSchema: Yup.object().shape({
     fullName: Yup.string().required("Full name is required."),
@@ -228,7 +233,6 @@ export default withFormik({
     telephone: Yup.string().required("Telephone is required!")
   }),
   handleSubmit: (values, { setSubmitting, props }) => {
-    // console.log('handle submit', values, props);
     // $(".checkout-form-btn").addClass("is-loading");
     setSubmitting(false);
     setTimeout(() => props.handlePayment(values), 350);

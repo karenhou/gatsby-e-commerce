@@ -1,4 +1,4 @@
-import { Button } from "reactstrap";
+import { Button, Spinner } from "reactstrap";
 // import CheckoutBtn from "./checkoutBtn";
 import React, { Component } from "react";
 import {
@@ -80,7 +80,12 @@ const createOptions = (fontSize, padding) => {
 class CheckoutForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { complete: false, error: false, errorMsg: "" };
+    this.state = {
+      complete: false,
+      error: false,
+      errorMsg: "",
+      loading: false
+    };
     this.submit = this.submit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -111,7 +116,11 @@ class CheckoutForm extends Component {
       address_state: user.state,
       address_zip: user.postcode
     });
+
     if (error === undefined && token) {
+      this.setState({
+        loading: true
+      });
       apolloClient
         .mutate({
           mutation: createOrder,
@@ -120,6 +129,13 @@ class CheckoutForm extends Component {
             orderId,
             productIds,
             ...user
+          },
+          update: caches => {
+            caches.writeData({
+              data: {
+                count: 0
+              }
+            });
           }
         })
         .then(result => {
@@ -130,6 +146,7 @@ class CheckoutForm extends Component {
             // clear local storage
             console.log("result else", result);
             client.resetStore();
+            // localStorage.removeItem("apollo-cache-persist");
             // global.window.localStorage.removeItem("apollo-cache-persist");
             setTimeout(() => this.props.handlePayment({ orderId }), 250);
           }
@@ -143,7 +160,15 @@ class CheckoutForm extends Component {
     }
   }
   render() {
-    if (this.state.complete) return <h1>Purchase Complete</h1>;
+    // if (this.state.complete && this.state.loading === false) return <h1>Purchase Complete</h1>;
+    if (this.state.loading) {
+      return (
+        <>
+          <Spinner color="primary" />
+          <div>loading</div>
+        </>
+      );
+    }
     return (
       <form onSubmit={this.submit}>
         <label style={{ width: "100%" }}>
@@ -176,7 +201,7 @@ class CheckoutForm extends Component {
             {...createOptions(this.props.fontSize)}
           />
         </label>
-        <Button disabled={this.state.error}>Pay</Button>
+        <Button>Pay</Button>
         {this.state.errorMsg !== "" ? (
           <p style={{ color: "red" }}>{this.state.errorMsg}</p>
         ) : (

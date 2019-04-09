@@ -20,24 +20,31 @@ import Login from "./login";
 const cartQuery = gql`
   query {
     cart @client {
+      __typename
+      items
       count
     }
   }
 `;
 
 const CartComponent = () => {
-  // console.log(object)
   return (
     <Query query={cartQuery}>
-      {({ data }) => {
-        if (data.cart) {
-          return (
-            <MyNav to="/cart" style={{ textDecoration: "none" }}>
-              <i className="fas fa-shopping-cart fa-lg" />
-              <span>Cart</span> <span>{data.cart.count}</span>
-            </MyNav>
-          );
-        } else return <div>Still loading</div>;
+      {({ loading, error, data }) => {
+        if (loading === false) {
+          if (data.cart.count > 0) {
+            return (
+              <MyNav to="/cart" style={{ textDecoration: "none" }}>
+                <i className="fas fa-shopping-cart fa-lg" />
+                <span>Cart</span> <span>{data.cart.count || 0}</span>
+              </MyNav>
+            );
+          } else {
+            return "";
+          }
+        } else {
+          return <p>Loading....</p>;
+        }
       }}
     </Query>
   );

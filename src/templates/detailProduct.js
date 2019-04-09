@@ -34,7 +34,7 @@ export default props => {
             <Card style={{ height: "100%" }}>
               <CardTitle>{contentfulProducts.name}</CardTitle>
               <CardSubtitle>$ {contentfulProducts.price}</CardSubtitle>
-              <CardText>{contentfulProducts.inventory}</CardText>
+              <CardText>Inventory: {contentfulProducts.inventory}</CardText>
               <Button>Check out</Button>
             </Card>
           </Col>

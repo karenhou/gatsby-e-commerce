@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
-import CartBtn from "../components/cartBtn";
+import CartBtn from "../components/btns/cartBtn";
 import {
   Card,
   CardImg,
@@ -11,6 +11,7 @@ import {
   CardTitle,
   CardSubtitle,
   Button,
+  CardText,
   Container,
   CardLink
 } from "reactstrap";
@@ -27,20 +28,19 @@ const ProductList = ({ products }) => {
             alt={product.node.photos[0].title}
           />
           <CardBody>
-            <CardTitle>{product.node.name}</CardTitle>
-            <CardSubtitle>${product.node.price}</CardSubtitle>
-            {/* <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText> */}
-
-            <Button>
+            <CardTitle>
               <CardLink
                 href={`/${product.node.category.name}/${
                   product.node.contentful_id
                 }`}
-                style={{ textDecoration: "none", color: "white" }}>
-                Detail
+                style={{ textDecoration: "none", color: "purple" }}>
+                {product.node.name}
               </CardLink>
-            </Button>
-            <CartBtn product={product} />
+            </CardTitle>
+            <CardSubtitle>${product.node.price}</CardSubtitle>
+            <CardText className="mt-3">
+              <CartBtn product={product} />
+            </CardText>
           </CardBody>
         </Card>
       </Col>
