@@ -77,7 +77,7 @@ const createOptions = (fontSize, padding) => {
   };
 };
 
-class CheckoutForm extends Component {
+class PaymentForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -130,13 +130,6 @@ class CheckoutForm extends Component {
             orderId,
             productIds,
             ...user
-          },
-          update: caches => {
-            caches.writeData({
-              data: {
-                count: 0
-              }
-            });
           }
         })
         .then(result => {
@@ -213,4 +206,4 @@ class CheckoutForm extends Component {
   }
 }
 
-export default injectStripe(CheckoutForm);
+export default injectStripe(PaymentForm);

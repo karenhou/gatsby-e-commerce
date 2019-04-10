@@ -1,16 +1,17 @@
 import React, { Component } from "react";
+import { Link } from "@reach/router";
+import { Container, Row, Col, Button } from "reactstrap";
+import { Elements, StripeProvider } from "react-stripe-elements";
+import { animated } from "react-spring";
+import { Spring } from "react-spring/renderprops";
+
+import OrderForm from "../components/orderForm";
 import SEO from "../components/seo";
 import Layout from "../components/layout";
 import CartItem from "../components/cartItem";
-import { Container, Row, Col, Button } from "reactstrap";
-import CheckoutForm from "../components/checkoutForm";
-import { Elements, StripeProvider } from "react-stripe-elements";
-import OrderForm from "../components/orderForm";
-import { animated } from "react-spring";
-import { Spring } from "react-spring/renderprops";
+import PaymentForm from "../components/paymentForm";
 import CheckoutProgress from "../components/checkoutProgress";
 import ShippingDetail from "../components/shippingDetail";
-import { Link } from "@reach/router";
 
 const StripeKey = process.env.CONTENTFUL_PK_KEY;
 
@@ -93,7 +94,7 @@ class Checkout extends Component {
                 <Col xs={6}>
                   <StripeProvider apiKey={StripeKey}>
                     <Elements>
-                      <CheckoutForm
+                      <PaymentForm
                         cartData={cartData}
                         userData={userData}
                         handlePayBtn={data => this.setState({ paying: data })}
