@@ -34,7 +34,7 @@ const CartComponent = () => {
         if (loading === false) {
           if (data.cart.count > 0) {
             return (
-              <MyNav to="/cart" style={{ textDecoration: "none" }}>
+              <MyNav to="/checkout" style={{ textDecoration: "none" }}>
                 <i className="fas fa-shopping-cart fa-lg" />
                 <span>Cart</span> <span>{data.cart.count || 0}</span>
               </MyNav>

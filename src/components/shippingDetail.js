@@ -36,7 +36,8 @@ const ShippingDetail = ({ userData, cartData, backToForm, paying }) => {
           {item.name} : {item.quantity} x ${item.price}/unit
         </p>
       ))}
-      <p>total: {cartData.total}</p>
+      <br />
+      <h3>Total: $ {cartData.total}</h3>
       {paying ? "" : <Button onClick={backToForm}>Back</Button>}
     </BorderContainer>
   );
