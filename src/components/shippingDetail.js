@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Container, Row } from "reactstrap";
+import { Button, Container } from "reactstrap";
 import styled from "styled-components";
 
 const BorderContainer = styled(Container)`

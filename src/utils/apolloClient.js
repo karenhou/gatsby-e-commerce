@@ -13,9 +13,11 @@ if (!process.browser) {
   global.fetch = fetch;
 }
 
-const GRAPHQL_URL = process.env.NODE_ENV
-  ? "http://localhost:4000/graphql"
-  : "http://localhost:4000/graphql";
+const GRAPHQL_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : process.env.API_URL;
+
 const cache = new InMemoryCache();
 const persistor = new CachePersistor({
   cache,

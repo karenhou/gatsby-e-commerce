@@ -1,5 +1,4 @@
 import { Button, Spinner } from "reactstrap";
-// import CheckoutBtn from "./checkoutBtn";
 import React, { Component } from "react";
 import {
   CardNumberElement,
@@ -10,7 +9,7 @@ import {
 import apolloClient from "../utils/apolloClient";
 import randomstring from "randomstring";
 import gql from "graphql-tag";
-import alertify from "alertifyjs";
+// import alertify from "alertifyjs";
 import client from "../utils/apolloClient";
 
 const createOrder = gql`
