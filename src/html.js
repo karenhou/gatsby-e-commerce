@@ -26,6 +26,15 @@ export default class HTML extends React.Component {
             type="text/javascript"
             src="node_modules/auth0-js/build/auth0.js"
           />
+          <link
+            rel="stylesheet"
+            href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.min.css"
+          />
+          <link
+            rel="stylesheet"
+            href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/bootstrap.rtl.min.css"
+          />
+          <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js" />
         </head>
         <body {...this.props.bodyAttributes}>
           <noscript>You need to enable JavaScript to run this app.</noscript>

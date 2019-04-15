@@ -9,8 +9,13 @@ import {
 import apolloClient from "../utils/apolloClient";
 import randomstring from "randomstring";
 import gql from "graphql-tag";
-// import alertify from "alertifyjs";
+import alertify from "alertifyjs";
 import client from "../utils/apolloClient";
+
+alertify.defaults.transition = "slide";
+alertify.defaults.theme.ok = "btn btn-primary";
+alertify.defaults.theme.cancel = "btn btn-danger";
+alertify.defaults.theme.input = "form-control";
 
 const createOrder = gql`
   mutation createOrder(
@@ -133,8 +138,19 @@ class PaymentForm extends Component {
         })
         .then(result => {
           if (result.data.createOrder === null) {
-            // alertify.alert("Payment failed, please try again.");
-            console.log("order result", result);
+            alertify.alert(
+              "Payment Fail - Create Order Fail",
+              "Please try again"
+            );
+            // console.log("order result", result);
+            setTimeout(() => {
+              this.setState({
+                error: true,
+                errorMsg: "payment failed - create order failed",
+                loading: false
+              });
+              this.props.handlePayBtn(false);
+            }, 500);
           } else {
             // clear local storage
             console.log("result else", result);
@@ -145,15 +161,22 @@ class PaymentForm extends Component {
           }
         })
         .catch(() => {
-          console.log("Payment failed, please try again. order result");
-          // alertify.alert("Payment failed, please try again.");
+          // console.log("Payment failed, please try again. order result ");
+          alertify.alert("Payment Fail", "Please try again");
+          setTimeout(() => {
+            this.setState({
+              error: true,
+              errorMsg: "payment failed",
+              loading: false
+            });
+            this.props.handlePayBtn(false);
+          }, 500);
         });
     } else {
       console.log("error ", error);
     }
   }
   render() {
-    // if (this.state.complete && this.state.loading === false) return <h1>Purchase Complete</h1>;
     if (this.state.loading) {
       return (
         <>
