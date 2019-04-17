@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { Query, ApolloConsumer } from "react-apollo";
 import gql from "graphql-tag";
 import { Row, Col, Button } from "reactstrap";
-import { Link } from "@reach/router";
 
 const cartQuery = gql`
   query {
@@ -14,40 +13,33 @@ const cartQuery = gql`
   }
 `;
 
-const CartHeader = () => {
+const CartHeader = props => {
   return (
     <Query query={cartQuery}>
-      {({ data }) => {
+      {({ loading, error, data }) => {
         return (
           <ApolloConsumer>
             {client => {
-              if (data.cart.count > 0) {
+              if (loading === true) {
+                return <h1>Loading</h1>;
+              } else {
                 return (
-                  <Row>
+                  <Row
+                    style={{ borderBottom: "solid 0.2rem #84bec9" }}
+                    className="mb-3">
                     <Col xs="8">
                       <h1>Cart</h1>
                     </Col>
                     <Col
                       xs="4"
                       style={{ textAlign: "right", paddingTop: "0.5em" }}>
-                      <Button>
-                        <Link
-                          to="/checkout"
-                          style={{
-                            textDecoration: "none",
-                            color: "white"
-                          }}>
+                      {data.cart.count > 0 ? (
+                        <Button onClick={() => props.checkoutClicked()}>
                           Checkout
-                        </Link>
-                      </Button>
-                    </Col>
-                  </Row>
-                );
-              } else {
-                return (
-                  <Row>
-                    <Col>
-                      <h1>Cart Empty</h1>
+                        </Button>
+                      ) : (
+                        ""
+                      )}
                     </Col>
                   </Row>
                 );

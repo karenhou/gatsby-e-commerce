@@ -1,4 +1,4 @@
-import { Button, Spinner } from "reactstrap";
+import { Button, Spinner, Container } from "reactstrap";
 import React, { Component } from "react";
 import {
   CardNumberElement,
@@ -52,15 +52,6 @@ const createOrder = gql`
   }
 `;
 
-const handleBlur = () => {
-  console.log("[blur]");
-};
-const handleFocus = () => {
-  console.log("[focus]");
-};
-const handleReady = () => {
-  console.log("[ready]");
-};
 const createOptions = (fontSize, padding) => {
   return {
     style: {
@@ -142,7 +133,6 @@ class PaymentForm extends Component {
               "Payment Fail - Create Order Fail",
               "Please try again"
             );
-            // console.log("order result", result);
             setTimeout(() => {
               this.setState({
                 error: true,
@@ -153,15 +143,11 @@ class PaymentForm extends Component {
             }, 500);
           } else {
             // clear local storage
-            console.log("result else", result);
             client.resetStore();
-            // localStorage.removeItem("apollo-cache-persist");
-            // global.window.localStorage.removeItem("apollo-cache-persist");
             setTimeout(() => this.props.handlePayment({ orderId }), 250);
           }
         })
         .catch(() => {
-          // console.log("Payment failed, please try again. order result ");
           alertify.alert("Payment Fail", "Please try again");
           setTimeout(() => {
             this.setState({
@@ -179,10 +165,15 @@ class PaymentForm extends Component {
   render() {
     if (this.state.loading) {
       return (
-        <>
-          <Spinner color="primary" />
-          <div>loading</div>
-        </>
+        <Container className="text-center">
+          <Spinner
+            className="mb-4"
+            color="primary"
+            style={{ width: "5rem", height: "5rem" }}
+          />
+          <p>processing</p>
+          <p>please don't refresh or exit the page</p>
+        </Container>
       );
     }
     return (
@@ -190,30 +181,21 @@ class PaymentForm extends Component {
         <label style={{ width: "100%" }}>
           Card number
           <CardNumberElement
-            onBlur={handleBlur}
             onChange={this.handleChange}
-            onFocus={handleFocus}
-            onReady={handleReady}
             {...createOptions(this.props.fontSize)}
           />
         </label>
         <label style={{ width: "100%" }}>
           Expiration date
           <CardExpiryElement
-            onBlur={handleBlur}
             onChange={this.handleChange}
-            onFocus={handleFocus}
-            onReady={handleReady}
             {...createOptions(this.props.fontSize)}
           />
         </label>
         <label style={{ width: "100%" }}>
           CVC
           <CardCVCElement
-            onBlur={handleBlur}
             onChange={this.handleChange}
-            onFocus={handleFocus}
-            onReady={handleReady}
             {...createOptions(this.props.fontSize)}
           />
         </label>

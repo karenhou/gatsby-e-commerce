@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import { Row, Col, Button } from "reactstrap";
-import AddItemQuantityBtn from "./btns/addItemQuantityBtn";
-import ReduceItemQuantityBtn from "./btns/reduceItemQuantityBtn";
-import RemoveItemBtn from "./btns/removeItemBtn";
-
+import { Container, Row, Col } from "reactstrap";
 import { Query, ApolloConsumer } from "react-apollo";
 import gql from "graphql-tag";
 import { navigate } from "gatsby";
 import styled from "styled-components";
+
+import AddItemQuantityBtn from "./btns/addItemQuantityBtn";
+import ReduceItemQuantityBtn from "./btns/reduceItemQuantityBtn";
+import RemoveItemBtn from "./btns/removeItemBtn";
 
 const cartQuery = gql`
   query {
@@ -32,10 +32,9 @@ const ItemListStyle = styled.div`
   background: white;
 `;
 
-const Item = ({ data, calTotal, showCheckoutBtn, readOnly }) => {
+const Item = ({ data, calTotal, readOnly }) => {
   const items = data.cart.items ? JSON.parse(data.cart.items) : [];
   calTotal(items);
-
   return items.map(item => {
     return (
       <ItemListStyle key={item.id}>
@@ -74,7 +73,6 @@ class CartItem extends Component {
       total: 0
     };
   }
-
   calculateTotal(items) {
     const { total } = this.state;
     let newTotal = 0;
@@ -83,7 +81,10 @@ class CartItem extends Component {
       newTotal = newTotal + item.price * item.quantity;
     });
     if (total !== newTotal) {
-      setTimeout(() => this.setState({ total: newTotal, items }), 300);
+      setTimeout(() => {
+        this.setState({ total: newTotal, items });
+        if (this.props.handlePayment) this.props.handlePayment(this.state);
+      }, 300);
     }
   }
 
@@ -93,39 +94,41 @@ class CartItem extends Component {
         {({ loading, error, data }) => {
           if (loading === true) {
             return <h1>Loading</h1>;
-          }
-          if (data.cart.count > 0) {
-            return (
-              <ApolloConsumer>
-                {client => {
-                  return (
-                    <>
+          } else {
+            if (data.cart.count > 0) {
+              return (
+                <ApolloConsumer>
+                  {client => {
+                    return (
                       <Item
-                        showCheckoutBtn={this.props.showCheckoutBtn}
                         readOnly={this.props.readOnly}
                         data={data}
                         calTotal={items => this.calculateTotal(items)}
                       />
-                      {this.props.showCheckoutBtn ? (
-                        <div className="mt-3" style={{ textAlign: "right" }}>
-                          <Button
-                            onClick={() =>
-                              this.props.handlePayment(this.state)
-                            }>
-                            Proceed
-                          </Button>
-                        </div>
-                      ) : (
-                        ""
-                      )}
-                    </>
-                  );
-                }}
-              </ApolloConsumer>
-            );
-          } else if (data.cart.count === 0) {
-            setTimeout(() => navigate("/"), 1000);
-            return <h3>Empty cart. Redirect to home</h3>;
+                    );
+                  }}
+                </ApolloConsumer>
+              );
+            } else {
+              setTimeout(() => navigate("/"), 1500);
+              return (
+                <Container className="mt-4">
+                  <Row style={{ justifyContent: "center" }} className="mb-3">
+                    <h1>Empty cart. Redirect to home</h1>
+                  </Row>
+                  <Row style={{ justifyContent: "center" }}>
+                    <i
+                      className="fas fa-shopping-cart"
+                      style={{
+                        fontSize: "20rem",
+                        opacity: "0.2",
+                        color: "gray"
+                      }}
+                    />
+                  </Row>
+                </Container>
+              );
+            }
           }
         }}
       </Query>

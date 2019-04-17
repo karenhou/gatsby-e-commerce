@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { isUndefined } from "underscore";
 import { withFormik } from "formik";
 import * as Yup from "yup";
-import { navigateTo } from "gatsby-link";
+// import { navigateTo } from "gatsby-link";
 
 const ErrorP = styled.p`
   color: red;
@@ -15,15 +15,10 @@ const ErrorP = styled.p`
 class OrderForm extends Component {
   constructor(props) {
     super(props);
-
     this.state = { isVisible: false };
   }
 
   componentDidMount() {
-    if (this.props.cartData.count === 0) {
-      navigateTo("/");
-    }
-
     const isMobile = !isUndefined(global.window)
       ? global.window.innerWidth < 768
       : false;
@@ -197,7 +192,7 @@ class OrderForm extends Component {
           <span className="icon mr-2">
             <i className="far fa-credit-card" />
           </span>
-          <span>Make payment</span>
+          <span>Proceed to payment</span>
         </button>
       </form>
     );
@@ -233,7 +228,6 @@ export default withFormik({
     telephone: Yup.string().required("Telephone is required!")
   }),
   handleSubmit: (values, { setSubmitting, props }) => {
-    // $(".checkout-form-btn").addClass("is-loading");
     setSubmitting(false);
     setTimeout(() => props.handlePayment(values), 350);
   },
