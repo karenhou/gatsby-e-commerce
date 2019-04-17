@@ -9,6 +9,17 @@ const MyContainer = styled.section`
   font-family: "Lobster", cursive;
 `;
 
+const Headings = styled.h1`
+  color: white;
+  text-transform: uppercase;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 65%;
+  font-size: 8.5rem;
+  transform: translate(-50%, -50%);
+`;
+
 const Landing = () => {
   return (
     <MyContainer id="home">
@@ -30,8 +41,6 @@ const Landing = () => {
             style={{
               backgroundSize: "cover",
               position: "absolute",
-              // left: 0,
-              // top: 0,
               width: "100%",
               height: "100vh"
             }}
@@ -42,7 +51,8 @@ const Landing = () => {
       <Container>
         {/* <Header /> */}
         <Row style={{ height: "100vh" }}>
-          <Col xs={12} className="text-center">
+          <Col xs={12} className="text-right">
+            <Headings>Candle Factory</Headings>
             {/* <h1 style={{ color: "#367d8a" }}>Landing</h1> */}
           </Col>
         </Row>

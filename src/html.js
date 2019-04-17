@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import favicon from "./images/gatsby-icon.png";
+import favicon from "./static/images/gatsby-icon.png";
 
 export default class HTML extends React.Component {
   render() {
