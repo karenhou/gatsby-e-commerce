@@ -30,13 +30,13 @@ const CartHeader = props => {
                     <Col xs="8">
                       <h1>Cart</h1>
                     </Col>
-                    <Col
-                      xs="4"
-                      style={{ textAlign: "right", paddingTop: "0.5em" }}>
+                    <Col xs="4" style={{ textAlign: "right" }}>
                       {data.cart.count > 0 ? (
-                        <Button onClick={() => props.checkoutClicked()}>
+                        <button
+                          className="StyledBtn"
+                          onClick={() => props.checkoutClicked()}>
                           Checkout
-                        </Button>
+                        </button>
                       ) : (
                         ""
                       )}

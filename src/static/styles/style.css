@@ -42,7 +42,8 @@ input::placeholder {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.025em;
-  background-color: #6772e5;
+  /* background-color: #6772e5; */
+  background-color: #84bec9;
   text-decoration: none;
   -webkit-transition: all 150ms ease;
   transition: all 150ms ease;

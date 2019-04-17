@@ -3,12 +3,14 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const Progress = styled.div`
+  /* color: rgb(132, 190, 201); */
   border-top: 1px solid #979797;
   margin: 3rem 2rem;
   .active {
     font-weight: bold;
     .dot {
-      background-color: #000 !important;
+      /* background-color: #000 !important; */
+      background-color: #84bec9 !important;
     }
   }
   .step {

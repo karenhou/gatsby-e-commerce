@@ -199,7 +199,7 @@ class PaymentForm extends Component {
             {...createOptions(this.props.fontSize)}
           />
         </label>
-        <Button>Pay</Button>
+        <button className="StyledBtn">Pay</button>
         {this.state.errorMsg !== "" ? (
           <p style={{ color: "red" }}>{this.state.errorMsg}</p>
         ) : (

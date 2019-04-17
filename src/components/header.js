@@ -112,29 +112,16 @@ const Header = ({ siteTitle }) => {
               </MyNav>
             </NavItem>
             <NavItem>
-              <i
-                className="fab fa-instagram mr-2 fa-lg"
-                style={{ color: "white" }}
-              />
+              <MyNav to="#intro" style={{ textDecoration: "none" }}>
+                About
+              </MyNav>
             </NavItem>
             <NavItem>
-              <i
-                className="fab fa-facebook-f mr-2 fa-lg"
-                style={{ color: "white" }}
-              />
+              <MyNav to="#category" style={{ textDecoration: "none" }}>
+                Category
+              </MyNav>
             </NavItem>
-            <NavItem>
-              <i
-                className="fab fa-twitter-square mr-2 fa-lg"
-                style={{ color: "white" }}
-              />
-            </NavItem>
-            <NavItem>
-              <i
-                className="fas fa-envelope mr-2 fa-lg"
-                style={{ color: "white" }}
-              />
-            </NavItem>
+
             <NavItem>
               <CartComponent />
             </NavItem>

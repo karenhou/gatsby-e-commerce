@@ -5,7 +5,7 @@ import Img from "gatsby-image";
 
 const Introduction = () => {
   return (
-    <Container fluid={true}>
+    <Container fluid={true} id="intro" style={{ height: "80vh" }}>
       <Row>
         <Col xs={8}>
           <Container style={{ padding: "1rem 2rem 1rem 2rem" }}>

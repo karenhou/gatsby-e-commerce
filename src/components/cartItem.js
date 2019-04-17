@@ -30,6 +30,7 @@ const ItemListStyle = styled.div`
   outline: 0;
   border-radius: 4px;
   background: white;
+  /* margin-bottom: 0.1rem; */
 `;
 
 const Item = ({ data, calTotal, readOnly }) => {

@@ -43,7 +43,7 @@ const Cards = ({ pix }) => {
 
 export default () => {
   return (
-    <Container fluid={true}>
+    <Container fluid={true} id="category">
       <Row>
         <StaticQuery
           query={graphql`

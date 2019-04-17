@@ -54,9 +54,12 @@ class CartBtn extends Component {
         {({ data }) => (
           <ApolloConsumer>
             {client => (
-              <Button onClick={() => this.handleAddToCart(client, data)}>
+              <button
+                className="StyledBtn"
+                style={{ width: "100%", marginTop: "0" }}
+                onClick={() => this.handleAddToCart(client, data)}>
                 Add to cart
-              </Button>
+              </button>
             )}
           </ApolloConsumer>
         )}

@@ -38,7 +38,13 @@ const ShippingDetail = ({ userData, cartData, backToForm, paying }) => {
       ))}
       <br />
       <h3>Total: $ {cartData.total}</h3>
-      {paying ? "" : <Button onClick={backToForm}>Back</Button>}
+      {paying ? (
+        ""
+      ) : (
+        <button className="StyledBtn" onClick={backToForm}>
+          Back
+        </button>
+      )}
     </BorderContainer>
   );
 };

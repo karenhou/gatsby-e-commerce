@@ -15,6 +15,7 @@ import {
   CardLink
 } from "reactstrap";
 import styled from "styled-components";
+
 const MyCard = styled(Card)`
   display: block;
   /* margin: 10px 0 20px 0; */
@@ -26,6 +27,12 @@ const MyCard = styled(Card)`
   outline: 0;
   border-radius: 4px;
   background: white;
+`;
+
+const CategoryHeader = styled.h1`
+  text-align: center;
+  padding: 3rem 0 2rem 0;
+  color: #84bec9;
 `;
 
 const ProductList = ({ products }) => {
@@ -45,7 +52,7 @@ const ProductList = ({ products }) => {
                 href={`/${product.node.category.name}/${
                   product.node.contentful_id
                 }`}
-                style={{ textDecoration: "none", color: "purple" }}>
+                style={{ textDecoration: "none", color: "#84bec9" }}>
                 {product.node.name}
               </CardLink>
             </CardTitle>
@@ -64,16 +71,18 @@ export default props => {
   const { allContentfulProducts } = props.data;
   return (
     <Layout>
-      <Container>
-        <h1 style={{ textAlign: "center" }}>{props.pageContext.cat}</h1>
-        <Row>
-          {allContentfulProducts !== null ? (
-            <ProductList products={allContentfulProducts.edges} />
-          ) : (
-            <h1>No data</h1>
-          )}
-        </Row>
-      </Container>
+      <section>
+        <Container>
+          <CategoryHeader>{props.pageContext.cat}</CategoryHeader>
+          <Row>
+            {allContentfulProducts !== null ? (
+              <ProductList products={allContentfulProducts.edges} />
+            ) : (
+              <h1>No data</h1>
+            )}
+          </Row>
+        </Container>
+      </section>
     </Layout>
   );
 };
