@@ -14,12 +14,25 @@ import {
   Container,
   CardLink
 } from "reactstrap";
+import styled from "styled-components";
+const MyCard = styled(Card)`
+  display: block;
+  /* margin: 10px 0 20px 0; */
+  padding: 10px 14px;
+  font-size: 1em;
+  box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px,
+    rgba(0, 0, 0, 0.0196078) 0px 1px 0px;
+  border: 0;
+  outline: 0;
+  border-radius: 4px;
+  background: white;
+`;
 
 const ProductList = ({ products }) => {
   return products.map(product => {
     return (
       <Col xs={12} md={6} lg={4} key={product.node.contentful_id}>
-        <Card>
+        <MyCard>
           <CardImg
             top
             width="100%"
@@ -41,7 +54,7 @@ const ProductList = ({ products }) => {
               <CartBtn product={product} />
             </CardText>
           </CardBody>
-        </Card>
+        </MyCard>
       </Col>
     );
   });

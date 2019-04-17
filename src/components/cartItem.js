@@ -124,7 +124,7 @@ class CartItem extends Component {
               </ApolloConsumer>
             );
           } else if (data.cart.count === 0) {
-            setTimeout(() => navigate("/"), 800);
+            setTimeout(() => navigate("/"), 1000);
             return <h3>Empty cart. Redirect to home</h3>;
           }
         }}

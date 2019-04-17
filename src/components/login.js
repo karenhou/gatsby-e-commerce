@@ -4,7 +4,8 @@ import styled from "styled-components";
 
 const MyNav = styled.a`
   cursor: pointer;
-  color: #84bec9 !important;
+  /* color: #84bec9 !important; */
+  color: white !important;
   padding: 0 1em;
   &:hover {
     color: #274547;

@@ -32,16 +32,12 @@ const CartComponent = () => {
     <Query query={cartQuery}>
       {({ loading, error, data }) => {
         if (loading === false) {
-          if (data.cart.count > 0) {
-            return (
-              <MyNav to="/checkout" style={{ textDecoration: "none" }}>
-                <i className="fas fa-shopping-cart fa-lg" />
-                <span>Cart</span> <span>{data.cart.count || 0}</span>
-              </MyNav>
-            );
-          } else {
-            return "";
-          }
+          return (
+            <MyNav to="/checkout" style={{ textDecoration: "none" }}>
+              <i className="fas fa-shopping-cart fa-lg" />
+              <span className="ml-2">{data.cart.count || 0}</span>
+            </MyNav>
+          );
         } else {
           return <p>Loading....</p>;
         }
@@ -55,7 +51,8 @@ const MyHeader = styled.header`
 `;
 
 const MyNav = styled(Link)`
-  color: #84bec9;
+  /* color: #84bec9; */
+  color: white;
   margin-top: 1em;
   padding: 0 1em;
   &:hover {
@@ -78,9 +75,13 @@ const Header = ({ siteTitle }) => {
   const [isOpen, set] = useState(true);
   return (
     <MyHeader>
-      <Navbar dark expand="md">
+      <Navbar
+        dark
+        expand="md"
+        style={{ backgroundColor: "#84bec9", opacity: "0.5" }}>
         <NavbarBrand style={{ flexGrow: "1" }}>
-          <StaticQuery
+          <h5>Logo</h5>
+          {/* <StaticQuery
             query={graphql`
               query {
                 placeholderImage: file(
@@ -97,7 +98,7 @@ const Header = ({ siteTitle }) => {
             render={data => (
               <Img fixed={data.placeholderImage.childImageSharp.fixed} />
             )}
-          />
+          /> */}
         </NavbarBrand>
         <NavbarToggler
           onClick={() => set(state => !state)}
@@ -111,11 +112,35 @@ const Header = ({ siteTitle }) => {
               </MyNav>
             </NavItem>
             <NavItem>
-              <CartComponent />
+              <i
+                className="fab fa-instagram mr-2 fa-lg"
+                style={{ color: "white" }}
+              />
             </NavItem>
             <NavItem>
-              <Login />
+              <i
+                className="fab fa-facebook-f mr-2 fa-lg"
+                style={{ color: "white" }}
+              />
             </NavItem>
+            <NavItem>
+              <i
+                className="fab fa-twitter-square mr-2 fa-lg"
+                style={{ color: "white" }}
+              />
+            </NavItem>
+            <NavItem>
+              <i
+                className="fas fa-envelope mr-2 fa-lg"
+                style={{ color: "white" }}
+              />
+            </NavItem>
+            <NavItem>
+              <CartComponent />
+            </NavItem>
+            {/* <NavItem>
+              <Login />
+            </NavItem> */}
             <UncontrolledDropdown nav inNavbar />
             {/* <NavItem>
               <NavLink onClick={() => props.onLanChange('en')}>

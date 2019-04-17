@@ -3,6 +3,7 @@ import { StaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 import Img from "gatsby-image";
 import { Container, Row, Col } from "reactstrap";
+import Header from "../components/header";
 
 const MyContainer = styled.section`
   font-family: "Lobster", cursive;
@@ -37,10 +38,12 @@ const Landing = () => {
           />
         )}
       />
+
       <Container>
+        {/* <Header /> */}
         <Row style={{ height: "100vh" }}>
           <Col xs={12} className="text-center">
-            <h1 style={{ color: "#367d8a" }}>Landing</h1>
+            {/* <h1 style={{ color: "#367d8a" }}>Landing</h1> */}
           </Col>
         </Row>
       </Container>
