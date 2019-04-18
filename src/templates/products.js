@@ -14,7 +14,10 @@ import {
   Container,
   CardLink
 } from "reactstrap";
+import Sidebar from "../components/sidebar";
 import styled from "styled-components";
+import { ApolloProvider } from "react-apollo";
+import apolloClient from "../utils/apolloClient";
 
 const MyCard = styled(Card)`
   display: block;
@@ -30,8 +33,7 @@ const MyCard = styled(Card)`
 `;
 
 const CategoryHeader = styled.h1`
-  text-align: center;
-  padding: 3rem 0 2rem 0;
+  padding: 1rem 0 1rem 0;
   color: #84bec9;
 `;
 
@@ -69,21 +71,23 @@ const ProductList = ({ products }) => {
 
 export default props => {
   const { allContentfulProducts } = props.data;
+
   return (
-    <Layout>
-      <section>
-        <Container>
+    <ApolloProvider client={apolloClient}>
+      <div className="wrapper">
+        <Sidebar cat={props.pageContext.cat} />
+        <section style={{ width: "100%", textAlign: "center" }}>
           <CategoryHeader>{props.pageContext.cat}</CategoryHeader>
-          <Row>
-            {allContentfulProducts !== null ? (
+          <Row className="mx-2" style={{ justifyContent: "center" }}>
+            {allContentfulProducts.edges.length > 0 ? (
               <ProductList products={allContentfulProducts.edges} />
             ) : (
-              <h1>No data</h1>
+              <h1>Coming soon...</h1>
             )}
           </Row>
-        </Container>
-      </section>
-    </Layout>
+        </section>
+      </div>
+    </ApolloProvider>
   );
 };
 
