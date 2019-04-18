@@ -48,7 +48,7 @@ class OrderForm extends Component {
           <label className="label">Full name</label>
           <div className="control">
             <input
-              className="input is-shadowless"
+              className="input"
               name="fullName"
               value={values.fullName}
               onChange={handleChange}
@@ -64,7 +64,7 @@ class OrderForm extends Component {
           <label className="label">Address 1</label>
           <div className="control">
             <input
-              className="input is-shadowless"
+              className="input"
               name="address1"
               value={values.address1}
               onChange={handleChange}
@@ -79,7 +79,7 @@ class OrderForm extends Component {
           <label className="label">Address 2</label>
           <div className="control">
             <input
-              className="input is-shadowless"
+              className="input"
               name="address2"
               value={values.address2}
               onChange={handleChange}
@@ -96,7 +96,7 @@ class OrderForm extends Component {
               <label className="label">City</label>
               <div className="control">
                 <input
-                  className="input is-shadowless"
+                  className="input "
                   name="city"
                   value={values.city}
                   onChange={handleChange}
@@ -109,7 +109,7 @@ class OrderForm extends Component {
               <label className="label">Postcode</label>
               <div className="control">
                 <input
-                  className="input is-shadowless"
+                  className="input"
                   name="postcode"
                   value={values.postcode}
                   onChange={handleChange}
@@ -128,7 +128,7 @@ class OrderForm extends Component {
               <label className="label">State</label>
               <div className="control">
                 <input
-                  className="input is-shadowless"
+                  className="input"
                   name="state"
                   value={values.state}
                   onChange={handleChange}
@@ -143,7 +143,7 @@ class OrderForm extends Component {
               <label className="label">Country</label>
               <div className="control">
                 <input
-                  className="input is-shadowless"
+                  className="input"
                   name="country"
                   value={values.country}
                   onChange={handleChange}
@@ -160,7 +160,7 @@ class OrderForm extends Component {
           <label className="label">Email</label>
           <div className="control">
             <input
-              className="input is-shadowless"
+              className="input"
               name="email"
               value={values.email}
               onChange={handleChange}
@@ -173,7 +173,7 @@ class OrderForm extends Component {
           <label className="label">Telephone</label>
           <div className="control">
             <input
-              className="input is-shadowless"
+              className="input"
               name="telephone"
               value={values.telephone}
               onChange={handleChange}
