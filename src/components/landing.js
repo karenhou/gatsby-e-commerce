@@ -14,10 +14,20 @@ const Headings = styled.h1`
   text-transform: uppercase;
   margin: 0;
   position: absolute;
-  top: 50%;
-  left: 65%;
+  top: 45%;
+  left: 50%;
   font-size: 8.5rem;
   transform: translate(-50%, -50%);
+`;
+
+const Subtitles = styled.h3`
+  color: white;
+  margin: 0;
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  font-size: 2rem;
+  transform: translate(-32%, -50%);
 `;
 
 const Landing = () => {
@@ -49,11 +59,10 @@ const Landing = () => {
       />
 
       <Container>
-        {/* <Header /> */}
         <Row style={{ height: "100vh" }}>
           <Col xs={12} className="text-right">
-            <Headings>Candle Factory</Headings>
-            {/* <h1 style={{ color: "#367d8a" }}>Landing</h1> */}
+            <Headings>Uncented Candles</Headings>
+            <Subtitles>when dedication meet delicate hand craft</Subtitles>
           </Col>
         </Row>
       </Container>

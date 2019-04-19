@@ -15,7 +15,11 @@ export default () => {
           <Col>
             © {new Date().getFullYear()}, Built with
             {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
+            <a
+              href="https://www.gatsbyjs.org"
+              style={{ textDecoration: "none", color: "white" }}>
+              Gatsby
+            </a>
           </Col>
           <Col className="text-right">
             <i

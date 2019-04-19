@@ -10,7 +10,7 @@
 input,
 .StripeElement {
   display: block;
-  margin: 10px 0 20px 0;
+  margin: 10px 0 15px 0;
   max-width: 500px;
   padding: 10px 14px;
   font-size: 1em;
@@ -114,18 +114,26 @@ a:focus {
   padding: 0 0 10px 0;
   /* border-bottom: 1px solid #47748b; */
 }
+#sidebar ul {
+  display: flex;
+  flex-direction: column;
+}
 
 #sidebar ul p {
   color: #fff;
   padding: 10px;
 }
+/* #sidebar ul > :last-child {
+  margin-top: auto !important;
+} */
 
 #sidebar ul li a {
   color: white;
   /* padding: 10px; */
   padding: 1rem;
   font-size: 1.1em;
-  display: block;
+  /* display: block; */
+  display: inline-block;
 }
 
 #sidebar ul li span a {

@@ -1,4 +1,4 @@
-import { Button, Spinner, Container } from "reactstrap";
+import { Spinner, Container, Row } from "reactstrap";
 import React, { Component } from "react";
 import {
   CardNumberElement,
@@ -11,6 +11,9 @@ import randomstring from "randomstring";
 import gql from "graphql-tag";
 import alertify from "alertifyjs";
 import client from "../utils/apolloClient";
+import { StaticQuery, graphql } from "gatsby";
+import Img from "gatsby-image";
+import styled from "styled-components";
 
 alertify.defaults.transition = "slide";
 alertify.defaults.theme.ok = "btn btn-primary";
@@ -50,6 +53,20 @@ const createOrder = gql`
       orderId
     }
   }
+`;
+
+const BorderContainer = styled(Container)`
+  display: block;
+  margin: 10px 0 20px 0;
+  max-width: 500px;
+  padding: 10px 14px;
+  font-size: 1em;
+  box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px,
+    rgba(0, 0, 0, 0.0196078) 0px 1px 0px;
+  border: 0;
+  outline: 0;
+  border-radius: 4px;
+  background: white;
 `;
 
 const createOptions = (fontSize, padding) => {
@@ -177,35 +194,65 @@ class PaymentForm extends Component {
       );
     }
     return (
-      <form onSubmit={this.submit}>
-        <label style={{ width: "100%" }}>
-          Card number
-          <CardNumberElement
-            onChange={this.handleChange}
-            {...createOptions(this.props.fontSize)}
+      <BorderContainer>
+        <span>
+          <h3>Payment Details</h3>
+          <StaticQuery
+            query={graphql`
+              query {
+                placeholderImage: file(
+                  relativePath: { eq: "payment-strip.png" }
+                ) {
+                  childImageSharp {
+                    fluid(maxWidth: 1440) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            `}
+            render={data => (
+              <Img
+                fluid={data.placeholderImage.childImageSharp.fluid}
+                style={{
+                  width: "150px",
+                  marginBottom: "0.75rem"
+                }}
+              />
+            )}
           />
-        </label>
-        <label style={{ width: "100%" }}>
-          Expiration date
-          <CardExpiryElement
-            onChange={this.handleChange}
-            {...createOptions(this.props.fontSize)}
-          />
-        </label>
-        <label style={{ width: "100%" }}>
-          CVC
-          <CardCVCElement
-            onChange={this.handleChange}
-            {...createOptions(this.props.fontSize)}
-          />
-        </label>
-        <button className="StyledBtn">Pay</button>
-        {this.state.errorMsg !== "" ? (
-          <p style={{ color: "red" }}>{this.state.errorMsg}</p>
-        ) : (
-          ""
-        )}
-      </form>
+        </span>
+
+        <form onSubmit={this.submit}>
+          <label style={{ width: "100%" }}>
+            Card number
+            <CardNumberElement
+              onChange={this.handleChange}
+              {...createOptions(this.props.fontSize)}
+            />
+          </label>
+          <label style={{ width: "100%" }}>
+            Expiration date
+            <CardExpiryElement
+              onChange={this.handleChange}
+              {...createOptions(this.props.fontSize)}
+            />
+          </label>
+          <label style={{ width: "100%" }}>
+            CVC
+            <CardCVCElement
+              onChange={this.handleChange}
+              {...createOptions(this.props.fontSize)}
+            />
+          </label>
+          <button className="StyledBtn">Pay</button>
+          {this.state.errorMsg !== "" ? (
+            <p style={{ color: "red" }}>{this.state.errorMsg}</p>
+          ) : (
+            ""
+          )}
+        </form>
+      </BorderContainer>
     );
   }
 }

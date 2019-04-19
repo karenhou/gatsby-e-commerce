@@ -3,14 +3,14 @@ import { Container, Row, Col } from "reactstrap";
 import styled from "styled-components";
 import { StaticQuery, graphql } from "gatsby";
 
-const Headings = styled.h1`
+const Headings = styled.p`
   color: white;
   text-transform: uppercase;
   margin: 0;
   position: absolute;
   top: 50%;
   left: 50%;
-  font-size: 4.5rem;
+  font-size: 3rem;
   transform: translate(-50%, -50%);
 `;
 
@@ -18,14 +18,14 @@ const Cards = ({ pix }) => {
   return pix.map(image => (
     <Col
       xs={12}
-      md={6}
-      lg={6}
+      md={3}
+      lg={3}
       key={image.node.coverPhoto.id}
       style={{
         backgroundImage: `url(${image.node.coverPhoto.fixed.src})`,
         backgroundSize: "cover",
         width: "100%",
-        height: "50vh"
+        height: "100vh"
       }}>
       <Headings>
         <a

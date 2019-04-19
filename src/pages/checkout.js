@@ -135,7 +135,7 @@ class Checkout extends Component {
                     <h1>payment complete</h1>
                     <h1>orderID: {paymentData.orderId}</h1>
                     <h3>Please check your email for your order</h3>
-                    <Button>
+                    <Button style={{ background: "#84bec9", border: "none" }}>
                       <Link
                         to="/"
                         style={{

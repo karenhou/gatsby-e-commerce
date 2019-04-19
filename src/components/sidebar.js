@@ -1,6 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import { StaticQuery, graphql } from "gatsby";
+import Img from "gatsby-image";
+import gql from "graphql-tag";
+import { Query } from "react-apollo";
+
+const cartQuery = gql`
+  query {
+    cart @client {
+      __typename
+      items
+      count
+    }
+  }
+`;
 
 const SideBarNav = styled.div`
   padding: 15px 10px;
@@ -10,6 +23,25 @@ const SideBarNav = styled.div`
   margin-bottom: 40px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 `;
+
+const CartIcon = () => {
+  return (
+    <Query query={cartQuery}>
+      {({ loading, error, data }) => {
+        if (loading === false) {
+          return (
+            <a href="/checkout" style={{ textDecoration: "none" }}>
+              <i className="fas fa-shopping-cart fa-2x" />
+              <span className="ml-2">{data.cart.count || 0}</span>
+            </a>
+          );
+        } else {
+          return <h1>loading</h1>;
+        }
+      }}
+    </Query>
+  );
+};
 
 const CatListNav = ({ data, currentCat }) => {
   return data
@@ -62,9 +94,10 @@ const Sidebar = props => {
             <a href="/#intro">
               <i className="fas fa-info-circle fa-2x mx-2" />
             </a>
-            <a href="/checkout">
+            <CartIcon />
+            {/* <a href="/checkout">
               <i className="fas fa-shopping-cart fa-2x mx-2" />
-            </a>
+            </a> */}
           </span>
         </li>
       </ul>
