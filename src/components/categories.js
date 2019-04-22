@@ -18,14 +18,15 @@ const Cards = ({ pix }) => {
   return pix.map(image => (
     <Col
       xs={12}
-      md={3}
+      sm={12}
+      md={6}
       lg={3}
       key={image.node.coverPhoto.id}
       style={{
         backgroundImage: `url(${image.node.coverPhoto.fixed.src})`,
         backgroundSize: "cover",
         width: "100%",
-        height: "100vh"
+        height: "80vh"
       }}>
       <Headings>
         <a
@@ -43,7 +44,10 @@ const Cards = ({ pix }) => {
 
 export default () => {
   return (
-    <Container fluid={true} id="category">
+    <Container id="category">
+      <Row className="mb-4">
+        <h1>Selections</h1>
+      </Row>
       <Row>
         <StaticQuery
           query={graphql`

@@ -20,8 +20,9 @@ const cartQuery = gql`
 `;
 
 const ItemListStyle = styled.div`
+  text-align: center;
   display: block;
-  /* margin: 10px 0 20px 0; */
+  /* height: 10rem; */
   padding: 10px 14px;
   font-size: 1em;
   box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px,
@@ -30,7 +31,6 @@ const ItemListStyle = styled.div`
   outline: 0;
   border-radius: 4px;
   background: white;
-  /* margin-bottom: 0.1rem; */
 `;
 
 const Item = ({ data, calTotal, readOnly }) => {
@@ -39,26 +39,39 @@ const Item = ({ data, calTotal, readOnly }) => {
   return items.map(item => {
     return (
       <ItemListStyle key={item.id}>
-        <Row style={{ textAlign: "center", alignItems: "center" }}>
-          <Col xs="3">
-            <img src={item.image} alt="pix" style={{ maxWidth: "100px" }} />
-          </Col>
-          <Col xs="5">
-            <Row>{item.name}</Row>
+        <Row style={{ alignItems: "center", height: "100%" }}>
+          {readOnly ? (
+            <Col xs="4" sm="6" md="4">
+              <img src={item.image} alt="pix" style={{ maxWidth: "8rem" }} />
+            </Col>
+          ) : (
+            <Col xs="3" sm="6" md="4">
+              <img src={item.image} alt="pix" style={{ maxWidth: "10rem" }} />
+            </Col>
+          )}
+
+          <Col xs="5" sm="6" md="4">
+            <Row>
+              <h4>{item.name}</h4>
+            </Row>
             <Row>${item.price}</Row>
           </Col>
-          <Col xs="2">x {item.quantity}</Col>
-          <Col xs="2">
-            {readOnly ? (
-              ""
-            ) : (
-              <>
+          {readOnly ? (
+            <Col xs="3" sm="2" md="3">
+              {item.quantity}
+            </Col>
+          ) : (
+            <>
+              <Col xs="2" sm="6" md="2">
                 <AddItemQuantityBtn node={item} />
+                <span className="m-auto">{item.quantity} </span>
                 <ReduceItemQuantityBtn node={item} />
+              </Col>
+              <Col xs="2" sm="6" md="2">
                 <RemoveItemBtn node={item} />
-              </>
-            )}
-          </Col>
+              </Col>
+            </>
+          )}
         </Row>
       </ItemListStyle>
     );

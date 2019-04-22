@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Query, ApolloConsumer } from "react-apollo";
 import gql from "graphql-tag";
-import { Button } from "reactstrap";
 
 const cartQuery = gql`
   query {

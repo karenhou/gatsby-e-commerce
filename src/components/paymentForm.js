@@ -1,4 +1,4 @@
-import { Spinner, Container, Row } from "reactstrap";
+import { Spinner, Container } from "reactstrap";
 import React, { Component } from "react";
 import {
   CardNumberElement,
@@ -196,7 +196,7 @@ class PaymentForm extends Component {
     return (
       <BorderContainer>
         <span>
-          <h3>Payment Details</h3>
+          <h2>Payment Details</h2>
           <StaticQuery
             query={graphql`
               query {

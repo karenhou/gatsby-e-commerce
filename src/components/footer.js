@@ -5,6 +5,7 @@ import styled from "styled-components";
 const Wrapper = styled.footer`
   background: #84bec9;
   height: 3rem;
+  margin-top: 3rem;
 `;
 
 export default () => {

@@ -11,7 +11,7 @@ input,
 .StripeElement {
   display: block;
   margin: 10px 0 15px 0;
-  max-width: 500px;
+  /* max-width: 500px; */
   padding: 10px 14px;
   font-size: 1em;
   font-family: "Source Code Pro", monospace;
@@ -73,6 +73,14 @@ a:focus {
   transition: all 0.3s;
 }
 
+h1 {
+  color: #84bec9;
+}
+
+h3 {
+  color: #999;
+}
+
 .line {
   width: 100%;
   height: 1px;
@@ -123,16 +131,13 @@ a:focus {
   color: #fff;
   padding: 10px;
 }
-/* #sidebar ul > :last-child {
-  margin-top: auto !important;
-} */
 
 #sidebar ul li a {
   color: white;
   /* padding: 10px; */
   padding: 1rem;
   font-size: 1.1em;
-  /* display: block; */
+  display: block;
   display: inline-block;
 }
 

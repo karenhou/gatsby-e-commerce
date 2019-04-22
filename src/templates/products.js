@@ -1,6 +1,5 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Layout from "../components/layout";
 import CartBtn from "../components/btns/cartBtn";
 import {
   Card,
@@ -11,7 +10,6 @@ import {
   CardTitle,
   CardSubtitle,
   CardText,
-  Container,
   CardLink
 } from "reactstrap";
 import Sidebar from "../components/sidebar";
@@ -21,7 +19,6 @@ import apolloClient from "../utils/apolloClient";
 
 const MyCard = styled(Card)`
   display: block;
-  /* margin: 10px 0 20px 0; */
   padding: 10px 14px;
   font-size: 1em;
   box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px,

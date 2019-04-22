@@ -9,13 +9,11 @@ import {
   NavItem,
   UncontrolledDropdown
 } from "reactstrap";
-import { StaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
-import Img from "gatsby-image";
 import { Link } from "@reach/router";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
-import Login from "./login";
+// import Login from "./login";
 
 const cartQuery = gql`
   query {
@@ -51,7 +49,6 @@ const MyHeader = styled.header`
 `;
 
 const MyNav = styled(Link)`
-  /* color: #84bec9; */
   color: white;
   margin-top: 1em;
   padding: 0 1em;

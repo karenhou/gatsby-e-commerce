@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Container } from "reactstrap";
+import { Container } from "reactstrap";
 import styled from "styled-components";
 
 const BorderContainer = styled(Container)`
@@ -20,7 +20,7 @@ const ShippingDetail = ({ userData, cartData, backToForm, paying }) => {
   const { items } = cartData;
   return (
     <BorderContainer>
-      <h3>Info</h3>
+      <h2>Info</h2>
       <p>Name: {userData.fullName}</p>
       <p>Email: {userData.email}</p>
       <p>Telephone: {userData.telephone}</p>
@@ -30,14 +30,14 @@ const ShippingDetail = ({ userData, cartData, backToForm, paying }) => {
       <p>city: {userData.city}</p>
       <p>country: {userData.country}</p>
       <br />
-      <h3>Items</h3>
+      <h2>Items</h2>
       {items.map(item => (
         <p key={item.id}>
           {item.name} : {item.quantity} x ${item.price}/unit
         </p>
       ))}
       <br />
-      <h3>Total: $ {cartData.total}</h3>
+      <h2>Total: $ {cartData.total}</h2>
       {paying ? (
         ""
       ) : (

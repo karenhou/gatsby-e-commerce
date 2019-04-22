@@ -1,7 +1,7 @@
 import React from "react";
 import { Query, ApolloConsumer } from "react-apollo";
 import gql from "graphql-tag";
-import { Row, Col, Button } from "reactstrap";
+import { Row, Col } from "reactstrap";
 
 const cartQuery = gql`
   query {
@@ -26,11 +26,13 @@ const CartHeader = props => {
                 return (
                   <Row
                     style={{ borderBottom: "solid 0.2rem #84bec9" }}
-                    className="mb-3">
+                    className="mb-4">
                     <Col xs="8">
                       <h1>Cart</h1>
                     </Col>
-                    <Col xs="4" style={{ textAlign: "right" }}>
+                    <Col
+                      xs="4"
+                      style={{ textAlign: "right", marginBottom: "1rem" }}>
                       {data.cart.count > 0 ? (
                         <button
                           className="StyledBtn"

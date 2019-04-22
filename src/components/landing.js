@@ -3,7 +3,6 @@ import { StaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 import Img from "gatsby-image";
 import { Container, Row, Col } from "reactstrap";
-import Header from "../components/header";
 
 const MyContainer = styled.section`
   font-family: "Lobster", cursive;
@@ -15,7 +14,7 @@ const Headings = styled.h1`
   margin: 0;
   position: absolute;
   top: 45%;
-  left: 50%;
+  left: 60%;
   font-size: 8.5rem;
   transform: translate(-50%, -50%);
 `;
@@ -25,9 +24,9 @@ const Subtitles = styled.h3`
   margin: 0;
   position: absolute;
   top: 75%;
-  left: 50%;
+  left: 44%;
   font-size: 2rem;
-  transform: translate(-32%, -50%);
+  transform: translate(0, -50%);
 `;
 
 const Landing = () => {

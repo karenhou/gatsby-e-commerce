@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Query, ApolloConsumer } from "react-apollo";
 import gql from "graphql-tag";
-import { Button } from "reactstrap";
 
 const cartQuery = gql`
   query {
@@ -41,11 +40,12 @@ class removeItemBtn extends Component {
         {({ data }) => (
           <ApolloConsumer>
             {client => (
-              <Button
+              <button
+                className="StyledBtn"
                 onClick={() => this.handleRemoveItem(client, data)}
                 style={{ margin: "5px" }}>
-                <i className="fas fa-trash" />
-              </Button>
+                <i className="fas fa-times" />
+              </button>
             )}
           </ApolloConsumer>
         )}
