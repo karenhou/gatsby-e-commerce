@@ -22,6 +22,7 @@ const cartQuery = gql`
 const ItemListStyle = styled.div`
   text-align: center;
   display: block;
+  margin: 0 3rem;
   /* height: 10rem; */
   padding: 10px 14px;
   font-size: 1em;
@@ -39,39 +40,26 @@ const Item = ({ data, calTotal, readOnly }) => {
   return items.map(item => {
     return (
       <ItemListStyle key={item.id}>
-        <Row style={{ alignItems: "center", height: "100%" }}>
-          {readOnly ? (
-            <Col xs="4" sm="6" md="4">
-              <img src={item.image} alt="pix" style={{ maxWidth: "8rem" }} />
-            </Col>
-          ) : (
-            <Col xs="3" sm="6" md="4">
-              <img src={item.image} alt="pix" style={{ maxWidth: "10rem" }} />
-            </Col>
-          )}
-
-          <Col xs="5" sm="6" md="4">
-            <Row>
+        <Row>
+          <Col md={2} style={{ alignSelf: "center" }}>
+            <RemoveItemBtn node={item} />
+          </Col>
+          <Col md={4}>
+            <Row style={{ justifyContent: "center" }}>
+              <img src={item.image} alt="pix" style={{ maxHeight: "10rem" }} />
+            </Row>
+          </Col>
+          <Col md={6}>
+            <Row className="mt-3">
               <h4>{item.name}</h4>
             </Row>
-            <Row>${item.price}</Row>
+            <Row className="mt-3">${item.price}</Row>
+            <Row className="mt-3">
+              <AddItemQuantityBtn node={item} />
+              <span className="mx-2 mt-2">{item.quantity} </span>
+              <ReduceItemQuantityBtn node={item} />
+            </Row>
           </Col>
-          {readOnly ? (
-            <Col xs="3" sm="2" md="3">
-              {item.quantity}
-            </Col>
-          ) : (
-            <>
-              <Col xs="2" sm="6" md="2">
-                <AddItemQuantityBtn node={item} />
-                <span className="m-auto">{item.quantity} </span>
-                <ReduceItemQuantityBtn node={item} />
-              </Col>
-              <Col xs="2" sm="6" md="2">
-                <RemoveItemBtn node={item} />
-              </Col>
-            </>
-          )}
         </Row>
       </ItemListStyle>
     );

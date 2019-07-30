@@ -25,6 +25,7 @@ const createOrder = gql`
     $tokenId: String!
     $orderId: String!
     $productIds: [String]!
+    $input: [cartProduct]!
     $fullName: String!
     $address1: String!
     $address2: String
@@ -39,6 +40,7 @@ const createOrder = gql`
       tokenId: $tokenId
       orderId: $orderId
       productIds: $productIds
+      input: $input
       customerName: $fullName
       customerAddress1: $address1
       customerAddress2: $address2
@@ -118,6 +120,15 @@ class PaymentForm extends Component {
     const productIds = cartData.items.map(item => item.id);
     const orderId = randomstring.generate(6).toUpperCase();
     const user = userData !== null ? userData : {};
+    let products = [];
+    cartData.items.forEach(item => {
+      let temp = {
+        id: item.id,
+        quantity: item.quantity
+      };
+      products.push(temp);
+    });
+    console.log("product = ", products);
 
     let { token, error } = await this.props.stripe.createToken({
       name: user.fullName,
@@ -141,6 +152,7 @@ class PaymentForm extends Component {
             tokenId: token.id,
             orderId,
             productIds,
+            input: products,
             ...user
           }
         })
