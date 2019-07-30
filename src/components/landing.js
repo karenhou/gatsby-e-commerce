@@ -17,16 +17,57 @@ const Headings = styled.h1`
   left: 60%;
   font-size: 8.5rem;
   transform: translate(-50%, -50%);
+
+  @media all and (max-width: 991px) {
+    font-size: 7rem;
+    left: 50%;
+    text-align: left;
+  }
+
+  @media all and (max-width: 768px) {
+    font-size: 6rem;
+    left: 50%;
+    text-align: left;
+  }
+  @media all and (max-width: 575px) {
+    font-size: 4rem;
+    left: 50%;
+    text-align: left;
+  }
 `;
 
 const Subtitles = styled.h3`
   color: white;
   margin: 0;
   position: absolute;
-  top: 75%;
-  left: 44%;
+  top: 83%;
+  left: 45%;
   font-size: 2rem;
   transform: translate(0, -50%);
+
+  @media all and (max-width: 1199px) {
+    top: 87%;
+    right: 1%;
+  }
+
+  @media all and (max-width: 991px) {
+    text-align: left;
+    top: 80%;
+    left: 18%;
+  }
+
+  @media all and (max-width: 768px) {
+    font-size: 1.6rem;
+    top: 75%;
+    left: 18%;
+    text-align: center;
+  }
+  @media all and (max-width: 575px) {
+    font-size: 1.2rem;
+    top: 70%;
+    left: 18%;
+    text-align: center;
+  }
 `;
 
 const Landing = () => {
