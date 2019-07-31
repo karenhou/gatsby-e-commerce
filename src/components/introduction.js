@@ -47,7 +47,7 @@ const Introduction = () => {
                 fluid={data.placeholderImage.childImageSharp.fluid}
                 style={{
                   width: "100%",
-                  maxHeight: "25rem"
+                  height: "100%"
                 }}
               />
             )}

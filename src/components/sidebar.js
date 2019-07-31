@@ -48,11 +48,10 @@ const CatListNav = ({ data, currentCat }) => {
 
 const Sidebar = props => {
   return (
-    <nav id="sidebar">
+    <nav id="sidebar" className={props.collapsed ? "active" : ""}>
       <div className="sidebar-header">
-        <h2>Category</h2>
+        <h3>Category</h3>
       </div>
-
       <ul className="list-unstyled components">
         <StaticQuery
           query={graphql`

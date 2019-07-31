@@ -45,7 +45,7 @@ const Cards = ({ pix }) => {
 export default () => {
   return (
     <Container id="category">
-      <Row className="mb-4">
+      <Row className="mb-4 mx-2">
         <h1>Selections</h1>
       </Row>
       <Row>

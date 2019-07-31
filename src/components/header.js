@@ -103,23 +103,23 @@ const Header = ({ siteTitle }) => {
         />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            <NavItem>
+            <NavItem className="mb-1">
               <MyNav to="/" style={{ textDecoration: "none" }}>
                 Home
               </MyNav>
             </NavItem>
-            <NavItem>
+            <NavItem className="mb-1">
               <MyNav to="#intro" style={{ textDecoration: "none" }}>
                 About
               </MyNav>
             </NavItem>
-            <NavItem>
+            <NavItem className="mb-1">
               <MyNav to="#category" style={{ textDecoration: "none" }}>
                 Category
               </MyNav>
             </NavItem>
 
-            <NavItem>
+            <NavItem className="my-1">
               <CartComponent />
             </NavItem>
             {/* <NavItem>

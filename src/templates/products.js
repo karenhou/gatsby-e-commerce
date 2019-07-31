@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { graphql } from "gatsby";
 import CartBtn from "../components/btns/cartBtn";
 import {
@@ -37,7 +37,12 @@ const CategoryHeader = styled.h1`
 const ProductList = ({ products }) => {
   return products.map(product => {
     return (
-      <Col xs={12} md={6} lg={4} key={product.node.contentful_id}>
+      <Col
+        xs={12}
+        md={6}
+        lg={4}
+        key={product.node.contentful_id}
+        className="mb-4">
         <MyCard>
           <CardImg
             top
@@ -69,17 +74,34 @@ const ProductList = ({ products }) => {
 export default props => {
   const { allContentfulProducts } = props.data;
 
+  const [isOpen, set] = useState(false);
+
   return (
     <ApolloProvider client={apolloClient}>
       <div className="wrapper">
-        <Sidebar cat={props.pageContext.cat} />
+        <Sidebar cat={props.pageContext.cat} collapsed={isOpen} />
         <section style={{ width: "100%", textAlign: "center" }}>
+          <nav className="navbar navbar-expand-lg navbar-light">
+            <div className="container-fluid">
+              <button
+                type="button"
+                id="sidebarCollapse"
+                className={isOpen ? "navbar-btn active" : "navbar-btn"}
+                onClick={() => set(state => !state)}>
+                <span />
+                <span />
+                <span />
+              </button>
+            </div>
+          </nav>
           <CategoryHeader>{props.pageContext.cat}</CategoryHeader>
-          <Row className="mx-2" style={{ justifyContent: "center" }}>
+          <Row className="mx-2" style={{ justifyContent: "left" }}>
             {allContentfulProducts.edges.length > 0 ? (
               <ProductList products={allContentfulProducts.edges} />
             ) : (
-              <h1>Coming soon...</h1>
+              <Col>
+                <h1>Coming soon...</h1>
+              </Col>
             )}
           </Row>
         </section>
