@@ -82,7 +82,7 @@ class Checkout extends Component {
                 )}
                 {activeStep === 2 && (
                   <>
-                    <Col xs={6}>
+                    <Col sm={12} md={6}>
                       <ShippingDetail
                         cartData={cartData}
                         userData={userData}
@@ -90,7 +90,7 @@ class Checkout extends Component {
                         backToForm={() => this.setState({ activeStep: 1 })}
                       />
                     </Col>
-                    <Col xs={6}>
+                    <Col sm={12} md={6}>
                       <StripeProvider apiKey={StripeKey}>
                         <Elements>
                           <PaymentForm
