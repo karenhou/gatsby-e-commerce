@@ -48,8 +48,7 @@ class AddItemQuantityBtn extends Component {
             {client => (
               <button
                 className="StyledBtn"
-                onClick={() => this.handleAddQuantity(client, data)}
-                style={{ margin: "5px" }}>
+                onClick={() => this.handleAddQuantity(client, data)}>
                 <i className="fas fa-plus" />
               </button>
             )}

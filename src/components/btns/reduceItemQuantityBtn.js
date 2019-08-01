@@ -52,8 +52,7 @@ class ReduceItemQuantityBtn extends Component {
             {client => (
               <button
                 className="StyledBtn"
-                onClick={() => this.handleReduceQuantity(client, data)}
-                style={{ margin: "5px" }}>
+                onClick={() => this.handleReduceQuantity(client, data)}>
                 <i className="fas fa-minus" />
               </button>
             )}

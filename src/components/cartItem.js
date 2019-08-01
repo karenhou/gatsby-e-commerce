@@ -23,7 +23,6 @@ const ItemListStyle = styled.div`
   text-align: center;
   display: block;
   margin: 0 3rem;
-  /* height: 10rem; */
   padding: 10px 14px;
   font-size: 1em;
   box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px,
@@ -49,7 +48,7 @@ const Item = ({ data, calTotal, readOnly }) => {
             <img src={item.image} alt="pix" style={{ width: "10rem" }} />
           </Col>
 
-          <Col md={4}>
+          <Col md={4} className="mb-2">
             <h4>{item.name}</h4>${item.price}
           </Col>
 
