@@ -43,7 +43,7 @@ class removeItemBtn extends Component {
               <button
                 className="StyledBtn"
                 onClick={() => this.handleRemoveItem(client, data)}
-                style={{ margin: "5px" }}>
+                style={{ margin: "5px", backgroundColor: "#ec7373" }}>
                 <i className="fas fa-times" />
               </button>
             )}

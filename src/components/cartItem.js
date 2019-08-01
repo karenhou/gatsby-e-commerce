@@ -40,25 +40,23 @@ const Item = ({ data, calTotal, readOnly }) => {
   return items.map(item => {
     return (
       <ItemListStyle key={item.id}>
-        <Row>
-          <Col md={2} style={{ alignSelf: "center" }}>
+        <Row style={{ alignItems: "center" }}>
+          <Col md={2}>
             <RemoveItemBtn node={item} />
           </Col>
+
           <Col md={4}>
-            <Row style={{ justifyContent: "center" }}>
-              <img src={item.image} alt="pix" style={{ maxHeight: "10rem" }} />
-            </Row>
+            <img src={item.image} alt="pix" style={{ width: "10rem" }} />
           </Col>
-          <Col md={6}>
-            <Row className="mt-3">
-              <h4>{item.name}</h4>
-            </Row>
-            <Row className="mt-3">${item.price}</Row>
-            <Row className="mt-3">
-              <AddItemQuantityBtn node={item} />
-              <span className="mx-2 mt-2">{item.quantity} </span>
-              <ReduceItemQuantityBtn node={item} />
-            </Row>
+
+          <Col md={4}>
+            <h4>{item.name}</h4>${item.price}
+          </Col>
+
+          <Col md={2}>
+            <AddItemQuantityBtn node={item} />
+            <span className="mx-2 mt-2">{item.quantity} </span>
+            <ReduceItemQuantityBtn node={item} />
           </Col>
         </Row>
       </ItemListStyle>

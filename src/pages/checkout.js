@@ -39,7 +39,6 @@ class Checkout extends Component {
       paying,
       checkingOut
     } = this.state;
-    console.log("current cartdata ", cartData);
     return (
       <Layout>
         <SEO title="Checkout" />
@@ -59,27 +58,10 @@ class Checkout extends Component {
                 )}
               </Spring>
 
-              {/* {activeStep === 1 && (
-                <Spring
-                  from={{ opacity: 0, transform: "translate3d(100%,0,0)" }}
-                  to={{ opacity: 1, transform: "translate3d(0%,0,0)" }}>
-                  {stylesProps => (
-                    <animated.div style={stylesProps}>
-                      <CartItem
-                        readOnly={false}
-                        showCheckoutBtn={activeStep === 1}
-                        handlePayment={data =>
-                          this.setState({ activeStep: 2, cartData: data })
-                        }
-                      />
-                    </animated.div>
-                  )}
-                </Spring>
-              )} */}
               <Row>
                 {activeStep === 1 && (
                   <>
-                    <Col xs={6}>
+                    <Col sm={12} md={6}>
                       <CartItem
                         readOnly={true}
                         handlePayment={data =>
@@ -87,7 +69,7 @@ class Checkout extends Component {
                         }
                       />
                     </Col>
-                    <Col xs={6}>
+                    <Col sm={12} md={6}>
                       <OrderForm
                         cartData={cartData}
                         userData={userData}
