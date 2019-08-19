@@ -1,8 +1,9 @@
 import React from "react";
-import { StaticQuery, graphql, Spinner } from "gatsby";
+import { StaticQuery, graphql } from "gatsby";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import { Link } from "gatsby";
+import { Spinner } from "reactstrap";
 
 const cartQuery = gql`
   query {

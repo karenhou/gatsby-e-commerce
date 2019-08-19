@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
-import { Container, Row, Col, Button } from "reactstrap";
+import { Container, Row, Col, Button, Spinner } from "reactstrap";
 import { Elements, StripeProvider } from "react-stripe-elements";
 import { animated } from "react-spring";
 import { Spring } from "react-spring/renderprops";
