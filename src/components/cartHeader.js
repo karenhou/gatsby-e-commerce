@@ -1,7 +1,7 @@
 import React from "react";
 import { Query, ApolloConsumer } from "react-apollo";
 import gql from "graphql-tag";
-import { Row, Col } from "reactstrap";
+import { Row, Col, Spinner } from "reactstrap";
 
 const cartQuery = gql`
   query {
@@ -21,7 +21,7 @@ const CartHeader = props => {
           <ApolloConsumer>
             {client => {
               if (loading === true) {
-                return <h1>Loading</h1>;
+                return <Spinner color="primary" />;
               } else {
                 return (
                   <Row

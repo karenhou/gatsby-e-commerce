@@ -13,7 +13,7 @@ export default class HTML extends React.Component {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
-          {this.props.headComponents}
+
           <link
             rel="stylesheet"
             href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
@@ -35,12 +35,19 @@ export default class HTML extends React.Component {
             href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/bootstrap.rtl.min.css"
           />
           <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js" />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="./static/styles/style.css"
+          />
+          <base href="/" target="_blank" />
+          {this.props.headComponents}
         </head>
         <body {...this.props.bodyAttributes}>
           <noscript>You need to enable JavaScript to run this app.</noscript>
           {this.props.preBodyComponents}
           <div
-            key={`body`}
+            key="body"
             id="___gatsby"
             dangerouslySetInnerHTML={{ __html: this.props.body }}
           />

@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import styled from "styled-components";
 import { StaticQuery, graphql } from "gatsby";
+import { Link } from "gatsby";
 
 const Headings = styled.p`
   color: white;
@@ -29,14 +30,14 @@ const Cards = ({ pix }) => {
         height: "80vh"
       }}>
       <Headings>
-        <a
-          href={`/${image.node.name}`}
+        <Link
+          to={`${image.node.name}`}
           style={{
             textDecoration: "none",
             color: "white"
           }}>
           {image.node.name}
-        </a>
+        </Link>
       </Headings>
     </Col>
   ));

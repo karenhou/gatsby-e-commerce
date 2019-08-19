@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Spinner } from "reactstrap";
 import { Query, ApolloConsumer } from "react-apollo";
 import gql from "graphql-tag";
 import { navigate } from "gatsby";
@@ -92,7 +92,7 @@ class CartItem extends Component {
       <Query query={cartQuery}>
         {({ loading, error, data }) => {
           if (loading === true) {
-            return <h1>Loading</h1>;
+            return <Spinner color="primary" />;
           } else {
             if (data.cart.count > 0) {
               return (

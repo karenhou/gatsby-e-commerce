@@ -9,12 +9,22 @@ import OrderForm from "../components/orderForm";
 import SEO from "../components/seo";
 import Layout from "../components/layout";
 import CartItem from "../components/cartItem";
-import PaymentForm from "../components/paymentForm";
+// import PaymentForm from "../components/paymentForm";
 import CheckoutProgress from "../components/checkoutProgress";
 import ShippingDetail from "../components/shippingDetail";
 import CartHeader from "../components/cartHeader";
+import Loadable from "react-loadable";
 
 const StripeKey = process.env.CONTENTFUL_PK_KEY;
+
+const LoadingComponent = () => {
+  return <Spinner color="primary" />;
+};
+
+const PaymentFormComponent = Loadable({
+  loader: () => import("../components/paymentForm"),
+  loading: LoadingComponent
+});
 
 class Checkout extends Component {
   constructor(props) {
@@ -93,7 +103,7 @@ class Checkout extends Component {
                     <Col sm={12} md={6}>
                       <StripeProvider apiKey={StripeKey}>
                         <Elements>
-                          <PaymentForm
+                          <PaymentFormComponent
                             cartData={cartData}
                             userData={userData}
                             handlePayBtn={data =>
@@ -107,6 +117,20 @@ class Checkout extends Component {
                               })
                             }
                           />
+                          {/* <PaymentForm
+                            cartData={cartData}
+                            userData={userData}
+                            handlePayBtn={data =>
+                              this.setState({ paying: data })
+                            }
+                            handlePayment={data =>
+                              this.setState({
+                                activeStep: 3,
+                                paymentData: data,
+                                paying: !paying
+                              })
+                            }
+                          /> */}
                         </Elements>
                       </StripeProvider>
                     </Col>

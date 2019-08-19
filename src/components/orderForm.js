@@ -1,12 +1,10 @@
-/* global $, SmoothScroll, global */
-
+/* global SmoothScroll, global */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { isUndefined } from "underscore";
 import { withFormik } from "formik";
 import * as Yup from "yup";
-// import { navigateTo } from "gatsby-link";
 
 const ErrorP = styled.p`
   color: red;

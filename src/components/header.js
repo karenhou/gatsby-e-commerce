@@ -7,7 +7,8 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  UncontrolledDropdown
+  UncontrolledDropdown,
+  Spinner
 } from "reactstrap";
 import styled from "styled-components";
 import { Link } from "@reach/router";
@@ -37,7 +38,7 @@ const CartComponent = () => {
             </MyNav>
           );
         } else {
-          return <p>Loading....</p>;
+          return <Spinner color="primary" />;
         }
       }}
     </Query>

@@ -5,6 +5,7 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import { CachePersistor } from "apollo-cache-persist";
 import { onError } from "apollo-link-error";
 import fetch from "isomorphic-unfetch";
+import memory from "localstorage-memory";
 
 import clientState from "./clientState";
 
@@ -12,16 +13,19 @@ import clientState from "./clientState";
 if (!process.browser) {
   global.fetch = fetch;
 }
-
 const GRAPHQL_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000"
     : process.env.API_URL;
 
 const cache = new InMemoryCache();
+
+const windowGlobal = typeof window !== "undefined" && window;
+const localAdapter = windowGlobal ? windowGlobal.localStorage : memory;
+
 const persistor = new CachePersistor({
   cache,
-  storage: global.window.localStorage,
+  storage: localAdapter,
   debug: true
 });
 persistor.restore();

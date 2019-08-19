@@ -1,7 +1,8 @@
 import React from "react";
-import { StaticQuery, graphql } from "gatsby";
+import { StaticQuery, graphql, Spinner } from "gatsby";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
+import { Link } from "gatsby";
 
 const cartQuery = gql`
   query {
@@ -19,13 +20,13 @@ const CartIcon = () => {
       {({ loading, error, data }) => {
         if (loading === false) {
           return (
-            <a href="/checkout" style={{ textDecoration: "none" }}>
+            <Link to="/checkout" style={{ textDecoration: "none" }}>
               <i className="fas fa-shopping-cart fa-2x" />
               <span className="ml-2">{data.cart.count || 0}</span>
-            </a>
+            </Link>
           );
         } else {
-          return <h1>loading</h1>;
+          return <Spinner color="primary" />;
         }
       }}
     </Query>
@@ -38,9 +39,9 @@ const CatListNav = ({ data, currentCat }) => {
     .map(cat => {
       return (
         <li key={cat.node.id}>
-          <a href={cat.node.name} style={{ width: "100%" }}>
+          <Link to={cat.node.name} style={{ width: "100%" }}>
             {cat.node.name}
-          </a>
+          </Link>
         </li>
       );
     });
@@ -77,12 +78,12 @@ const Sidebar = props => {
         />
         <li className="mt-2 text-center">
           <span>
-            <a href="/">
+            <Link to="/">
               <i className="fas fa-home fa-2x mx-2" />
-            </a>
-            <a href="/#intro">
+            </Link>
+            <Link to="/#intro">
               <i className="fas fa-info-circle fa-2x mx-2" />
-            </a>
+            </Link>
             <CartIcon />
           </span>
         </li>
