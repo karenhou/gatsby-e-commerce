@@ -23,7 +23,7 @@ npm run start
 
 ## Structure
 
-![](assets/structure.png)
+![](assets/ec-structure.png)
 
 ## Authors
 
