@@ -13,7 +13,8 @@ import alertify from "alertifyjs";
 import client from "../utils/apolloClient";
 import { StaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
-import styled from "styled-components";
+import StyledBtn from "./styled-components/styledBtn";
+import BorderContainer from "./styled-components/borderContainer";
 
 alertify.defaults.transition = "slide";
 alertify.defaults.theme.ok = "btn btn-primary";
@@ -55,20 +56,6 @@ const createOrder = gql`
       orderId
     }
   }
-`;
-
-const BorderContainer = styled(Container)`
-  display: block;
-  margin: 10px 0 20px 0;
-  max-width: 500px;
-  padding: 10px 14px;
-  font-size: 1em;
-  box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px,
-    rgba(0, 0, 0, 0.0196078) 0px 1px 0px;
-  border: 0;
-  outline: 0;
-  border-radius: 4px;
-  background: white;
 `;
 
 const createOptions = (fontSize, padding) => {
@@ -256,7 +243,7 @@ class PaymentForm extends Component {
               {...createOptions(this.props.fontSize)}
             />
           </label>
-          <button className="StyledBtn">Pay</button>
+          <StyledBtn>Pay</StyledBtn>
           {this.state.errorMsg !== "" ? (
             <p style={{ color: "red" }}>{this.state.errorMsg}</p>
           ) : (

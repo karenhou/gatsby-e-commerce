@@ -1,20 +1,6 @@
 import React from "react";
-import { Container } from "reactstrap";
-import styled from "styled-components";
-
-const BorderContainer = styled(Container)`
-  display: block;
-  margin: 10px 0 20px 0;
-  max-width: 500px;
-  padding: 10px 14px;
-  font-size: 1em;
-  box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px,
-    rgba(0, 0, 0, 0.0196078) 0px 1px 0px;
-  border: 0;
-  outline: 0;
-  border-radius: 4px;
-  background: white;
-`;
+import StyledBtn from "./styled-components/styledBtn";
+import BorderContainer from "./styled-components/borderContainer";
 
 const ShippingDetail = ({ userData, cartData, backToForm, paying }) => {
   const { items } = cartData;
@@ -38,13 +24,7 @@ const ShippingDetail = ({ userData, cartData, backToForm, paying }) => {
       ))}
       <br />
       <h2>Total: $ {cartData.total}</h2>
-      {paying ? (
-        ""
-      ) : (
-        <button className="StyledBtn" onClick={backToForm}>
-          Back
-        </button>
-      )}
+      {paying ? "" : <StyledBtn onClick={backToForm}>Back</StyledBtn>}
     </BorderContainer>
   );
 };

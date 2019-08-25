@@ -2,6 +2,7 @@ import React from "react";
 import { Query, ApolloConsumer } from "react-apollo";
 import gql from "graphql-tag";
 import { Row, Col, Spinner } from "reactstrap";
+import StyledBtn from "./styled-components/styledBtn";
 
 const cartQuery = gql`
   query {
@@ -34,11 +35,9 @@ const CartHeader = props => {
                       xs="4"
                       style={{ textAlign: "right", marginBottom: "1rem" }}>
                       {data.cart.count > 0 ? (
-                        <button
-                          className="StyledBtn"
-                          onClick={() => props.checkoutClicked()}>
+                        <StyledBtn onClick={() => props.checkoutClicked()}>
                           Checkout
-                        </button>
+                        </StyledBtn>
                       ) : (
                         ""
                       )}

@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { isUndefined } from "underscore";
 import { withFormik } from "formik";
 import * as Yup from "yup";
+import StyledBtn from "./styled-components/styledBtn";
 
 const ErrorP = styled.p`
   color: red;
@@ -182,16 +183,12 @@ class OrderForm extends Component {
             )}
           </div>
         </div>
-        <button
-          className="StyledBtn"
-          type="submit"
-          disabled={isSubmitting}
-          style={{ width: "100%" }}>
+        <StyledBtn disabled={isSubmitting} style={{ width: "100%" }}>
           <span className="icon mr-2">
             <i className="far fa-credit-card" />
           </span>
           <span>Proceed to payment</span>
-        </button>
+        </StyledBtn>
       </form>
     );
   }
