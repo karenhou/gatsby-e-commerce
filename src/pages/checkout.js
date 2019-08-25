@@ -15,7 +15,7 @@ import ShippingDetail from "../components/shippingDetail";
 import CartHeader from "../components/cartHeader";
 import Loadable from "react-loadable";
 
-const StripeKey = process.env.CONTENTFUL_PK_KEY;
+const StripeKey = process.env.STRIPE_PK_KEY;
 
 const LoadingComponent = () => {
   return <Spinner color="primary" />;

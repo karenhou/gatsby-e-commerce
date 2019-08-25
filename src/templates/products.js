@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import CartBtn from "../components/btns/cartBtn";
 import {
   Card,
@@ -9,8 +9,7 @@ import {
   CardBody,
   CardTitle,
   CardSubtitle,
-  CardText,
-  CardLink
+  CardText
 } from "reactstrap";
 import Sidebar from "../components/sidebar";
 import styled from "styled-components";
@@ -52,13 +51,11 @@ const ProductList = ({ products }) => {
           />
           <CardBody>
             <CardTitle>
-              <CardLink
-                href={`/${product.node.category.name}/${
-                  product.node.contentful_id
-                }`}
+              <Link
+                to={`/${product.node.category.name}/${product.node.contentful_id}`}
                 style={{ textDecoration: "none", color: "#84bec9" }}>
                 {product.node.name}
-              </CardLink>
+              </Link>
             </CardTitle>
             <CardSubtitle>${product.node.price}</CardSubtitle>
             <CardText className="mt-3">

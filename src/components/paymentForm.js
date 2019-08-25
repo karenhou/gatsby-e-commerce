@@ -128,7 +128,6 @@ class PaymentForm extends Component {
       };
       products.push(temp);
     });
-    console.log("product = ", products);
 
     let { token, error } = await this.props.stripe.createToken({
       name: user.fullName,

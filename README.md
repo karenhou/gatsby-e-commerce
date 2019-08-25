@@ -36,4 +36,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 - thanks for [perminder-klair](https://github.com/perminder-klair/gatsbyjs-ecommerce/tree/api) for showing how it is done
-- I've modified some part of perminder-klair's code to create this api.
+- I've modified some part of perminder-klair's code to create this website.

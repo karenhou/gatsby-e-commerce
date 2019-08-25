@@ -8,10 +8,13 @@ const Headings = styled.p`
   color: white;
   text-transform: uppercase;
   margin: 0;
-  position: absolute;
+  position: relative;
+  top: 43%;
+  text-align: center;
+  /* position: absolute;
   top: 50%;
-  left: 50%;
-  font-size: 3rem;
+  left: 50%; */
+  font-size: 2.5rem;
   transform: translate(-50%, -50%);
 `;
 
@@ -29,7 +32,7 @@ const Cards = ({ pix }) => {
         width: "100%",
         height: "80vh"
       }}>
-      <Headings>
+      <Headings id="cat-title">
         <Link
           to={`${image.node.name}`}
           style={{

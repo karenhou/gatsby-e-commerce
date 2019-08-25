@@ -40,9 +40,7 @@ exports.createPages = ({ graphql, actions }) => {
         const productsAll = result.data.allContentfulProducts.edges;
         productsAll.forEach((product, index) => {
           createPage({
-            path: `/${product.node.category.name}/${
-              product.node.contentful_id
-            }`,
+            path: `/${product.node.category.name}/${product.node.contentful_id}`,
             component: detailProduct,
             context: {
               item_id: product.node.contentful_id
@@ -64,18 +62,3 @@ exports.createPages = ({ graphql, actions }) => {
     );
   });
 };
-
-// exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
-//   if (stage === "build-html") {
-//     actions.setWebpackConfig({
-//       module: {
-//         rules: [
-//           {
-//             test: /alertify/,
-//             use: loaders.null()
-//           }
-//         ]
-//       }
-//     });
-//   }
-// };
