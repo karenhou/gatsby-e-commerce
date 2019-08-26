@@ -33,6 +33,12 @@ const CategoryHeader = styled.h1`
   color: #84bec9;
 `;
 
+const Wrapper = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+`;
+
 const ProductList = ({ products }) => {
   return products.map(product => {
     return (
@@ -72,10 +78,10 @@ export default props => {
   const { allContentfulProducts } = props.data;
 
   const [isOpen, set] = useState(false);
-
+  console.log("auto ", props);
   return (
     <ApolloProvider client={apolloClient}>
-      <div className="wrapper">
+      <Wrapper>
         <Sidebar cat={props.pageContext.cat} collapsed={isOpen} />
         <section style={{ width: "100%", textAlign: "center" }}>
           <nav className="navbar navbar-expand-lg navbar-light">
@@ -102,7 +108,7 @@ export default props => {
             )}
           </Row>
         </section>
-      </div>
+      </Wrapper>
     </ApolloProvider>
   );
 };
