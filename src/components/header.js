@@ -26,13 +26,32 @@ const cartQuery = gql`
   }
 `;
 
+const MyHeader = styled.header`
+  font-family: "Bungee Inline", cursive;
+`;
+
+const MyNav = styled(Link)`
+  color: white;
+  margin-top: 1em;
+  padding: 0 1em;
+  text-decoration: none;
+  &:hover {
+    color: #274547;
+  }
+  @media only screen and (min-width: 768px) {
+    &:hover {
+      border-bottom: 4px solid #274547;
+    }
+  }
+`;
+
 const CartComponent = () => {
   return (
     <Query query={cartQuery}>
       {({ loading, error, data }) => {
         if (loading === false) {
           return (
-            <MyNav to="/checkout" style={{ textDecoration: "none" }}>
+            <MyNav to="/checkout">
               <i className="fas fa-shopping-cart fa-lg" />
               <span className="ml-2">{data.cart.count || 0}</span>
             </MyNav>
@@ -44,30 +63,6 @@ const CartComponent = () => {
     </Query>
   );
 };
-
-const MyHeader = styled.header`
-  font-family: "Bungee Inline", cursive;
-`;
-
-const MyNav = styled(Link)`
-  color: white;
-  margin-top: 1em;
-  padding: 0 1em;
-  &:hover {
-    color: #274547;
-  }
-  @media only screen and (min-width: 768px) {
-    &:hover {
-      border-bottom: 4px solid #274547;
-    }
-  }
-
-  @media only screen and (max-width: 767px) {
-    &:hover {
-      border-bottom: none;
-    }
-  }
-`;
 
 const Header = ({ siteTitle }) => {
   const [isOpen, set] = useState(true);
@@ -104,20 +99,14 @@ const Header = ({ siteTitle }) => {
         />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            <NavItem className="mb-1">
-              <MyNav to="/" style={{ textDecoration: "none" }}>
-                Home
-              </MyNav>
+            <NavItem className="my-1">
+              <MyNav to="/">Home</MyNav>
             </NavItem>
-            <NavItem className="mb-1">
-              <MyNav to="#intro" style={{ textDecoration: "none" }}>
-                About
-              </MyNav>
+            <NavItem className="my-1">
+              <MyNav to="#intro">About</MyNav>
             </NavItem>
-            <NavItem className="mb-1">
-              <MyNav to="#category" style={{ textDecoration: "none" }}>
-                Category
-              </MyNav>
+            <NavItem className="my-1">
+              <MyNav to="#category">Category</MyNav>
             </NavItem>
 
             <NavItem className="my-1">

@@ -9,7 +9,6 @@ import OrderForm from "../components/orderForm";
 import SEO from "../components/seo";
 import Layout from "../components/layout";
 import CartItem from "../components/cartItem";
-// import PaymentForm from "../components/paymentForm";
 import CheckoutProgress from "../components/checkoutProgress";
 import ShippingDetail from "../components/shippingDetail";
 import CartHeader from "../components/cartHeader";
@@ -131,7 +130,6 @@ class Checkout extends Component {
                       <Link
                         to="/"
                         style={{
-                          textDecoration: "none",
                           color: "white"
                         }}>
                         Home

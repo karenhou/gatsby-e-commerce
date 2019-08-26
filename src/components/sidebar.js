@@ -21,7 +21,7 @@ const CartIcon = () => {
       {({ loading, error, data }) => {
         if (loading === false) {
           return (
-            <Link to="/checkout" style={{ textDecoration: "none" }}>
+            <Link to="/checkout">
               <i className="fas fa-shopping-cart fa-2x" />
               <span className="ml-2">{data.cart.count || 0}</span>
             </Link>
@@ -40,7 +40,7 @@ const CatListNav = ({ data, currentCat }) => {
     .map(cat => {
       return (
         <li key={cat.node.id}>
-          <Link to={`/${cat.node.name}`} style={{ width: "100%" }}>
+          <Link to={`/${cat.node.name}`} className="w-100">
             {cat.node.name}
           </Link>
         </li>

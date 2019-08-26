@@ -59,7 +59,7 @@ const ProductList = ({ products }) => {
             <CardTitle>
               <Link
                 to={`/${product.node.category.name}/${product.node.contentful_id}`}
-                style={{ textDecoration: "none", color: "#84bec9" }}>
+                style={{ color: "#84bec9" }}>
                 {product.node.name}
               </Link>
             </CardTitle>
@@ -82,7 +82,7 @@ export default props => {
     <ApolloProvider client={apolloClient}>
       <Wrapper>
         <Sidebar cat={props.pageContext.cat} collapsed={isOpen} />
-        <section style={{ width: "100%", textAlign: "center" }}>
+        <section className="text-center w-100">
           <nav className="navbar navbar-expand-lg navbar-light">
             <div className="container-fluid">
               <button
@@ -97,7 +97,7 @@ export default props => {
             </div>
           </nav>
           <CategoryHeader>{props.pageContext.cat}</CategoryHeader>
-          <Row className="mx-2" style={{ justifyContent: "left" }}>
+          <Row className="mx-2">
             {allContentfulProducts.edges.length > 0 ? (
               <ProductList products={allContentfulProducts.edges} />
             ) : (

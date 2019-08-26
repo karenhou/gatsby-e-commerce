@@ -111,20 +111,16 @@ class CartItem extends Component {
             } else {
               setTimeout(() => navigate("/"), 1500);
               return (
-                <Container className="mt-4">
-                  <Row style={{ justifyContent: "center" }} className="mb-3">
-                    <h1>Empty cart. Redirect to home</h1>
-                  </Row>
-                  <Row style={{ justifyContent: "center" }}>
-                    <i
-                      className="fas fa-shopping-cart"
-                      style={{
-                        fontSize: "20rem",
-                        opacity: "0.2",
-                        color: "gray"
-                      }}
-                    />
-                  </Row>
+                <Container className="mt-4 text-cener">
+                  <h1 className="mb-4">Empty cart. Redirect to home</h1>
+                  <i
+                    className="fas fa-shopping-cart"
+                    style={{
+                      fontSize: "20rem",
+                      opacity: "0.2",
+                      color: "gray"
+                    }}
+                  />
                 </Container>
               );
             }

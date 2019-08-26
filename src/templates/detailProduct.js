@@ -9,7 +9,7 @@ export default props => {
   const edge = { node }; //wrapper so the object would be same when passing to cartBtn
   return (
     <Layout>
-      <Container style={{ padding: "3rem" }}>
+      <Container className="pt-5">
         <div className="card mb-3">
           <div className="row no-gutters">
             <div

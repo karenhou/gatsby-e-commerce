@@ -5,7 +5,6 @@ import { StaticQuery, graphql } from "gatsby";
 import { Link } from "gatsby";
 
 const Headings = styled.p`
-  color: white;
   text-transform: uppercase;
   margin: 0;
   position: relative;
@@ -16,6 +15,9 @@ const Headings = styled.p`
   left: 50%; */
   font-size: 2.5rem;
   transform: translate(-50%, -50%);
+  a {
+    color: white;
+  }
 `;
 
 const Cards = ({ pix }) => {
@@ -33,14 +35,7 @@ const Cards = ({ pix }) => {
         height: "80vh"
       }}>
       <Headings id="cat-title">
-        <Link
-          to={`/${image.node.name}`}
-          style={{
-            textDecoration: "none !important",
-            color: "white"
-          }}>
-          {image.node.name}
-        </Link>
+        <Link to={`/${image.node.name}`}>{image.node.name}</Link>
       </Headings>
     </Col>
   ));
