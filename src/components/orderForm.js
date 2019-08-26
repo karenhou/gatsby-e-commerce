@@ -30,7 +30,6 @@ class OrderForm extends Component {
   }
 
   render() {
-    // const { isVisible } = this.state;
     const {
       values,
       touched,

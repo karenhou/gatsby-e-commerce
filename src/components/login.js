@@ -6,9 +6,11 @@ const MyNav = styled.a`
   cursor: pointer;
   /* color: #84bec9 !important; */
   color: white !important;
+  text-decoration: none;
   padding: 0 1em;
   &:hover {
     color: #274547;
+    text-decoration: none;
   }
   @media only screen and (min-width: 768px) {
     &:hover {
@@ -29,17 +31,9 @@ const Login = () => {
   const { isAuthenticated } = auth;
 
   if (isAuthenticated()) {
-    return (
-      <MyNav style={{ textDecoration: "none" }} onClick={auth.logout}>
-        Logout
-      </MyNav>
-    );
+    return <MyNav onClick={auth.logout}>Logout</MyNav>;
   } else {
-    return (
-      <MyNav style={{ textDecoration: "none" }} onClick={auth.login}>
-        Login
-      </MyNav>
-    );
+    return <MyNav onClick={auth.login}>Login</MyNav>;
   }
 };
 

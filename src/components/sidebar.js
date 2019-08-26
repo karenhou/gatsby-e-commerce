@@ -40,7 +40,7 @@ const CatListNav = ({ data, currentCat }) => {
     .map(cat => {
       return (
         <li key={cat.node.id}>
-          <Link to={cat.node.name} style={{ width: "100%" }}>
+          <Link to={`/${cat.node.name}`} style={{ width: "100%" }}>
             {cat.node.name}
           </Link>
         </li>

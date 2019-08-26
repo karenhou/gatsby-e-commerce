@@ -78,7 +78,6 @@ export default props => {
   const { allContentfulProducts } = props.data;
 
   const [isOpen, set] = useState(false);
-  console.log("auto ", props);
   return (
     <ApolloProvider client={apolloClient}>
       <Wrapper>

@@ -117,20 +117,6 @@ class Checkout extends Component {
                               })
                             }
                           />
-                          {/* <PaymentForm
-                            cartData={cartData}
-                            userData={userData}
-                            handlePayBtn={data =>
-                              this.setState({ paying: data })
-                            }
-                            handlePayment={data =>
-                              this.setState({
-                                activeStep: 3,
-                                paymentData: data,
-                                paying: !paying
-                              })
-                            }
-                          /> */}
                         </Elements>
                       </StripeProvider>
                     </Col>

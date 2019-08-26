@@ -34,9 +34,9 @@ const Cards = ({ pix }) => {
       }}>
       <Headings id="cat-title">
         <Link
-          to={`${image.node.name}`}
+          to={`/${image.node.name}`}
           style={{
-            textDecoration: "none",
+            textDecoration: "none !important",
             color: "white"
           }}>
           {image.node.name}

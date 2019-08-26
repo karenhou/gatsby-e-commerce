@@ -31,7 +31,7 @@ export default props => {
                     Inventory: {node.inventory}
                   </small>
                 </p>
-                <div class="mt-auto">
+                <div className="mt-auto">
                   <CartBtn product={edge} />
                 </div>
               </div>

@@ -16,30 +16,15 @@ export default () => {
           <Col>
             © {new Date().getFullYear()}, Built with
             {` `}
-            <a
-              href="https://www.gatsbyjs.org"
-              style={{ textDecoration: "none", color: "white" }}>
+            <a href="https://www.gatsbyjs.org" style={{ color: "white" }}>
               Gatsby
             </a>
           </Col>
-          <Col className="text-right">
-            <i
-              className="fab fa-instagram ml-4 fa-lg"
-              style={{ color: "white" }}
-            />
-            <i
-              className="fab fa-facebook-f ml-4 fa-lg"
-              style={{ color: "white" }}
-            />
-            <i
-              className="fab fa-twitter-square ml-4 fa-lg"
-              style={{ color: "white" }}
-            />
-
-            <i
-              className="fas fa-envelope ml-4 fa-lg"
-              style={{ color: "white" }}
-            />
+          <Col className="text-right" style={{ color: "white" }}>
+            <i className="fab fa-instagram ml-4 fa-lg" />
+            <i className="fab fa-facebook-f ml-4 fa-lg" />
+            <i className="fab fa-twitter-square ml-4 fa-lg" />
+            <i className="fas fa-envelope ml-4 fa-lg" />
           </Col>
         </Row>
       </Container>
