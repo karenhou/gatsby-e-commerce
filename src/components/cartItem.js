@@ -33,6 +33,37 @@ const ItemListStyle = styled.div`
   background: white;
 `;
 
+const ItemPrice = styled.p`
+  font-size: 1em;
+  margin-bottom: 0.2em;
+  color: black;
+
+  @media all and (max-width: 991px) {
+    font-size: 0.8em;
+  }
+
+  @media all and (max-width: 575px) {
+    text-align: center;
+    font-size: 0.6em;
+    font-weight: 500;
+  }
+`;
+
+const ItemTitle = styled.p`
+  font-size: 1.5em;
+  margin-bottom: 0.2em;
+
+  @media all and (max-width: 991px) {
+    font-size: 1.2em;
+  }
+
+  @media all and (max-width: 575px) {
+    text-align: center;
+    font-size: 1em;
+    font-weight: 500;
+  }
+`;
+
 const Item = ({ data, calTotal, readOnly }) => {
   const items = data.cart.items ? JSON.parse(data.cart.items) : [];
   calTotal(items);
@@ -40,19 +71,20 @@ const Item = ({ data, calTotal, readOnly }) => {
     return (
       <ItemListStyle key={item.id}>
         <Row style={{ alignItems: "center" }}>
-          <Col md={2}>
+          <Col xs={4} md={2}>
             <RemoveItemBtn node={item} />
           </Col>
 
-          <Col md={4}>
-            <img src={item.image} alt="pix" style={{ width: "10rem" }} />
+          <Col xs={8} md={2}>
+            <img src={item.image} alt="pix" style={{ width: "100%" }} />
           </Col>
 
           <Col md={4} className="mb-2">
-            <h4>{item.name}</h4>${item.price}
+            <ItemTitle>{item.name}</ItemTitle>
+            <ItemPrice>${item.price}</ItemPrice>
           </Col>
 
-          <Col md={2}>
+          <Col md={4}>
             <AddItemQuantityBtn node={item} />
             <span className="mx-2 mt-2">{item.quantity} </span>
             <ReduceItemQuantityBtn node={item} />

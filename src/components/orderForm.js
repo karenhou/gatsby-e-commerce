@@ -62,7 +62,7 @@ class OrderForm extends Component {
           <label className="label">Address 1</label>
           <div className="control">
             <input
-              className="input"
+              className="input w-100"
               name="address1"
               value={values.address1}
               onChange={handleChange}
@@ -77,7 +77,7 @@ class OrderForm extends Component {
           <label className="label">Address 2</label>
           <div className="control">
             <input
-              className="input"
+              className="input w-100"
               name="address2"
               value={values.address2}
               onChange={handleChange}
@@ -158,7 +158,7 @@ class OrderForm extends Component {
           <label className="label">Email</label>
           <div className="control">
             <input
-              className="input"
+              className="input w-100"
               name="email"
               value={values.email}
               onChange={handleChange}
@@ -182,7 +182,7 @@ class OrderForm extends Component {
             )}
           </div>
         </div>
-        <StyledBtn disabled={isSubmitting} style={{ width: "100%" }}>
+        <StyledBtn disabled={isSubmitting} className="mt-4 w-100">
           <span className="icon mr-2">
             <i className="far fa-credit-card" />
           </span>
