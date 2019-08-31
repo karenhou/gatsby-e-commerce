@@ -12,7 +12,6 @@
     "apollo-cache-persist": "^0.1.1",
     "apollo-client": "^2.6.4",
     "apollo-link-http": "^1.5.15",
-    "apollo-link-state": "^0.4.2",
     "auth0": "^2.19.0",
     "auth0-js": "^9.11.3",
     "babel-plugin-styled-components": "^1.10.6",

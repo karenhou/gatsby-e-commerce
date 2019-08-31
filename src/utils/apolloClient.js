@@ -7,8 +7,6 @@ import { onError } from "apollo-link-error";
 import fetch from "isomorphic-unfetch";
 import memory from "localstorage-memory";
 
-import clientState from "./clientState";
-
 // Polyfill fetch() on the server (used by apollo-client)
 if (!process.browser) {
   global.fetch = fetch;
@@ -30,18 +28,29 @@ const persistor = new CachePersistor({
 });
 persistor.restore();
 
+const onErrorLink = onError(({ graphQLErrors, networkError }) => {
+  console.log("onError", graphQLErrors, networkError);
+});
+
+const graphLink = new HttpLink({
+  uri: GRAPHQL_URL,
+  credentials: "same-origin"
+});
+
 const client = new ApolloClient({
-  link: ApolloLink.from([
-    onError(({ graphQLErrors, networkError }) => {
-      console.log("onError", graphQLErrors, networkError);
-    }),
-    clientState,
-    new HttpLink({
-      uri: GRAPHQL_URL,
-      credentials: "same-origin"
-    })
-  ]),
-  cache
+  cache,
+  link: ApolloLink.from([onErrorLink, graphLink]),
+  resolvers: {}
+});
+
+cache.writeData({
+  data: {
+    cart: {
+      __typename: "Cart",
+      count: 0,
+      items: null
+    }
+  }
 });
 
 // Purge persistor when the store was reset.
