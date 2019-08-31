@@ -30,7 +30,12 @@ const MyHeader = styled.header`
   font-family: "Bungee Inline", cursive;
 `;
 
-const MyNav = styled(Link)`
+const MyNavbar = styled(Navbar)`
+  background-color: #84bec9;
+  opacity: 0.5;
+`;
+
+const MyNavItem = styled(Link)`
   color: white;
   margin-top: 1em;
   padding: 0 1em;
@@ -51,10 +56,10 @@ const CartComponent = () => {
       {({ loading, error, data }) => {
         if (loading === false) {
           return (
-            <MyNav to="/checkout">
+            <MyNavItem to="/checkout">
               <i className="fas fa-shopping-cart fa-lg" />
               <span className="ml-2">{data.cart.count || 0}</span>
-            </MyNav>
+            </MyNavItem>
           );
         } else {
           return <Spinner color="primary" />;
@@ -68,10 +73,7 @@ const Header = ({ siteTitle }) => {
   const [isOpen, set] = useState(true);
   return (
     <MyHeader>
-      <Navbar
-        dark
-        expand="md"
-        style={{ backgroundColor: "#84bec9", opacity: "0.5" }}>
+      <MyNavbar expand="md">
         <NavbarBrand style={{ flexGrow: "1" }}>
           <h5>Logo</h5>
           {/* <StaticQuery
@@ -100,15 +102,14 @@ const Header = ({ siteTitle }) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem className="my-1">
-              <MyNav to="/">Home</MyNav>
+              <MyNavItem to="/">Home</MyNavItem>
             </NavItem>
             <NavItem className="my-1">
-              <MyNav to="#intro">About</MyNav>
+              <MyNavItem to="#intro">About</MyNavItem>
             </NavItem>
             <NavItem className="my-1">
-              <MyNav to="#category">Category</MyNav>
+              <MyNavItem to="#category">Category</MyNavItem>
             </NavItem>
-
             <NavItem className="my-1">
               <CartComponent />
             </NavItem>
@@ -118,21 +119,21 @@ const Header = ({ siteTitle }) => {
             <UncontrolledDropdown nav inNavbar />
             {/* <NavItem>
               <NavLink onClick={() => props.onLanChange('en')}>
-                <MyNav>
+                <MyNavItem>
                   <Trans>EN</Trans>
-                </MyNav>
+                </MyNavItem>
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink onClick={() => props.onLanChange('cn')}>
-                <MyNav>
+                <MyNavItem>
                   <Trans>中文</Trans>
-                </MyNav>
+                </MyNavItem>
               </NavLink>
             </NavItem> */}
           </Nav>
         </Collapse>
-      </Navbar>
+      </MyNavbar>
     </MyHeader>
   );
 };

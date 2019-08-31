@@ -4,13 +4,10 @@ import styled from "styled-components";
 
 const MyNav = styled.a`
   cursor: pointer;
-  /* color: #84bec9 !important; */
   color: white !important;
-  text-decoration: none;
   padding: 0 1em;
   &:hover {
     color: #274547;
-    text-decoration: none;
   }
   @media only screen and (min-width: 768px) {
     &:hover {

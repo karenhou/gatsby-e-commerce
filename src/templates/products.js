@@ -102,7 +102,9 @@ export default props => {
               <ProductList products={allContentfulProducts.edges} />
             ) : (
               <Col>
-                <h1>Coming soon...</h1>
+                <h1 style={{ color: "#274547", opacity: "0.5" }}>
+                  Coming soon...
+                </h1>
               </Col>
             )}
           </Row>

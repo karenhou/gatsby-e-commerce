@@ -26,6 +26,13 @@
 #cat-title:hover {
   transform: scale(1.2);
 }
+#cat-title > a {
+  color: white;
+}
+
+#cat-title a:hover {
+  color: #84bec9;
+}
 
 input,
 .StripeElement {
